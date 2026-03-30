@@ -41,7 +41,7 @@ When new skills are added to the plugin, click the **three dots** next to the ma
 |---|---|
 | [`brain.md`](./brain.md) | Main brain — cross-domain routing, precedence rules, compliance check |
 | [`messaging/`](./messaging) | Brand messaging files — tone, terminology, positioning, narrative, boilerplates, UI micro-copy |
-| [`design-system/`](./design-system) | Full visual design system — colors, typography, spacing, buttons, shadows, layout, accessibility, and more |
+| [`design-system/`](./design-system) | Full visual design system — colors, typography, spacing, buttons, shadows, layout, accessibility, and more. [View brand guidelines live](https://socialplus-tools.github.io/marketing-team/design-system/brand-guidelines.html) |
 | [`assets/`](./assets) | Official logo SVGs |
 | [`emails/`](./emails) | Email template reference, strategy guide, and HTML examples |
 | [`website/`](./website) | Live website content JSON (auto-updated on every Webflow publish via Cloudflare Worker) |
