@@ -1,0 +1,9 @@
+{
+  "name": "social-plus-marketing",
+  "version": "0.7.0",
+  "description": "Shared marketing plugin for the social.plus team. 9 skills covering brand messaging, design system, newsletters, blog content, social media, campaign copy, case studies, site intelligence, and product-update-vs-website — all fetched live from GitHub.",
+  "author": {
+    "name": "social.plus"
+  },
+  "repository": "https://github.com/socialplus-tools/marketing-team"
+}

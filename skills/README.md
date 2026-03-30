@@ -1,0 +1,44 @@
+# Marketing Plugin
+
+Shared plugin for the marketing team. Ensures all content Claude produces aligns with the latest brand messaging, design system, and website content.
+
+## Skills (9)
+
+### Content creation
+
+| Skill | What it does |
+|---|---|
+| brand-messaging | Fetches brand guidelines from GitHub and applies them to any written content. |
+| blog-seo-content | SEO-optimized blog posts, thought leadership articles, and long-form content. |
+| social-media | Platform-specific posts for LinkedIn, Instagram, and X. |
+| campaign-copy | Ad copy, campaign landing pages, and paid media content. |
+| newsletters | Generates MailerLite-compatible HTML emails from monthly product update docs. |
+| case-study | Customer stories and success case studies. |
+
+### Design & analysis
+
+| Skill | What it does |
+|---|---|
+| design-system | Fetches the full visual design system — colors, typography, spacing, buttons, layout, accessibility, and more. |
+| site-intelligence | Queries, audits, and analyzes the 37 marketing pages via the site-content.json snapshot. |
+| product-update-vs-website | Compares product updates against website content to find gaps. |
+
+## How it works
+
+Each skill fetches its reference files live from GitHub every time it triggers. All skills also fetch `brain.md` (the main brain) which provides cross-domain routing, precedence rules, and a compliance check. The actual content lives at:
+
+- [`messaging/`](../messaging) — Brand messaging files (tone, terminology, positioning, narrative, boilerplates, UI micro-copy)
+- [`design-system/`](../design-system) — Full visual design system (colors, typography, spacing, buttons, shadows, layout, accessibility, and more)
+- [`assets/`](../assets) — Official logo SVGs
+- [`emails/`](../emails) — Email template reference, strategy guide, and HTML examples
+- [`website/`](../website) — Live website content JSON (auto-updated by Cloudflare Worker on every Webflow publish)
+
+## Installation
+
+Install via the marketplace in Claude Cowork, or download the plugin folder and install manually. Works in Cowork and Claude Code (any environment with WebFetch or bash access).
+
+## Updating content
+
+Edit the markdown files in `messaging/` or `design-system/` on GitHub. Changes are live immediately for all team members — no plugin reinstall needed.
+
+Skill logic changes (SKILL.md files) require team members to update the plugin.

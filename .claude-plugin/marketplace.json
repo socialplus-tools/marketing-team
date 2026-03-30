@@ -1,0 +1,14 @@
+{
+  "name": "socialplus-tools",
+  "owner": {
+    "name": "social.plus"
+  },
+  "plugins": [
+    {
+      "name": "social-plus-marketing",
+      "source": "./skills",
+      "version": "0.7.0",
+      "description": "Shared tools and guidelines for the social.plus team. 9 skills covering the full B2B marketing workflow — all fetched live from GitHub."
+    }
+  ]
+}

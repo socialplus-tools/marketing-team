@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  <title>What's New in social.plus: Live Stream and Performance Widgets</title>
+
+  <!--[if !mso]>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<![endif]-->
+
+  <!--[if mso]>
+  <style>
+    * { font-family: sans-serif !important; }
+  </style>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+
+  <style type="text/css">
+    /* RESET STYLES */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      background-color: #f5f5f5;
+    }
+    img {
+      border: 0;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+    table, td, a {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    h1, h2, h3, h4, h5, p {
+      margin: 0;
+      word-break: break-word;
+    }
+
+    /* iOS BLUE LINKS */
+    a[x-apple-data-detectors] {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+    }
+
+    /* ANDROID CENTER FIX */
+    div[style*="margin: 16px 0;"] {
+      margin: 0 !important;
+    }
+
+    /* IMAGE BORDER RADIUS — Bam exports flat images, HTML applies radius */
+    .img-rounded {
+      border-radius: 16px;
+    }
+
+    /* BUTTON HOVER */
+    .btn-primary:hover {
+      background-color: #272b9d !important;
+    }
+    .btn-outline:hover {
+      background-color: #3b41ec !important;
+      color: #ffffff !important;
+    }
+
+    /* RESPONSIVE */
+    @media all and (max-width: 789px) {
+      .container {
+        width: 100% !important;
+        min-width: 100% !important;
+        padding: 0 !important;
+      }
+      .row {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+      .mobile-stack {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .mobile-stack img {
+        width: 100% !important;
+        height: auto !important;
+        margin-bottom: 16px !important;
+      }
+      .mobile-hide {
+        display: none !important;
+      }
+      .mobile-center {
+        text-align: center !important;
+      }
+      .mobile-full-width {
+        width: 100% !important;
+      }
+      .mobile-padding {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+      /* Header button stacking */
+      .header-cell {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+      }
+      .header-cell-btn {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding-top: 12px !important;
+      }
+      .btn-outline {
+        font-size: 13px !important;
+        padding: 8px 16px !important;
+      }
+      .img-rounded {
+        border-radius: 12px !important;
+      }
+    }
+    /* Single breakpoint at 789px covers 750px content + scrollbar buffer */
+
+    /* DARK MODE — Apple Mail, iOS Outlook, Outlook macOS */
+    :root {
+      color-scheme: light dark;
+      supported-color-schemes: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      /* Page & container backgrounds */
+      .body-bg { background-color: #1a1a1a !important; }
+      .container-bg { background-color: #2d2d2d !important; }
+
+      /* Text color overrides */
+      .text-dark { color: #f0f0f0 !important; }
+      .text-body { color: #e0e0e0 !important; }
+      .text-secondary { color: #a0a0a3 !important; }
+
+      /* Links */
+      .link-muted { color: #a0a0a3 !important; }
+      .link-brand { color: #7b7fff !important; }
+
+      /* Footer */
+      .footer-border { border-top-color: #444444 !important; }
+      .footer-separator { color: #555555 !important; }
+
+      /* Buttons */
+      .btn-outline {
+        border-color: #7b7fff !important;
+        color: #7b7fff !important;
+      }
+
+      /* Logo swap */
+      .logo-light { display: none !important; }
+      .logo-dark { display: block !important; }
+
+      /* Preheader invisible text */
+      .preheader-ghost { color: #1a1a1a !important; }
+    }
+
+    /* DARK MODE — Outlook Android app */
+    [data-ogsc] .text-dark { color: #f0f0f0 !important; }
+    [data-ogsc] .text-body { color: #e0e0e0 !important; }
+    [data-ogsc] .text-secondary { color: #a0a0a3 !important; }
+    [data-ogsc] .link-brand { color: #7b7fff !important; }
+    [data-ogsc] .logo-light { display: none !important; }
+    [data-ogsc] .logo-dark { display: block !important; }
+
+    /* DARK MODE — Outlook.com */
+    [data-ogsb] .body-bg { background-color: #1a1a1a !important; }
+    [data-ogsb] .container-bg { background-color: #2d2d2d !important; }
+    [data-ogsb] .logo-light { display: none !important; }
+    [data-ogsb] .logo-dark { display: block !important; }
+  </style>
+</head>
+<body class="body-bg" style="margin:0; padding:0; background-color:#f5f5f5; -webkit-text-size-adjust:none; -ms-text-size-adjust:none;">
+
+<!-- Hidden preheader text -->
+<div class="preheader-ghost" style="display:none; max-height:0px; overflow:hidden; font-size:0px; line-height:0px; color:#f5f5f5;">
+  What's New in social.plus: Live Stream and Performance Widgets &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847;
+</div>
+
+<!-- PREHEADER BAR -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="body-bg" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center" style="padding:10px 0;">
+      <table role="presentation" class="container" width="750" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="row text-secondary" align="left" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:13px; color:#717275; line-height:20px; padding:0 40px;">
+            What's New in social.plus: Live Stream and Performance Widgets
+          </td>
+          <td class="row" align="right" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:13px; line-height:20px; padding:0 40px; white-space:nowrap;">
+            <a href="{$url}" class="link-muted" style="color:#414347; text-decoration:underline;">View in browser</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- HEADER -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="body-bg" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
+        <tr>
+          <td class="row" style="padding:24px 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="header-cell" align="left" valign="middle">
+                  <a href="https://social.plus" target="_blank">
+                    <!--[if !mso]><!-- Dark mode: light logo (hidden by default, shown in dark) -->
+                    <img class="logo-dark" src="https://storage.mlcdn.com/account_image/958330/REPLACE_WITH_WHITE_LOGO.png" alt="social.plus" width="140" style="display:none; border:0;" />
+                    <!-- Light mode: dark logo (shown by default, hidden in dark) -->
+                    <!--<![endif]-->
+                    <img class="logo-light" src="https://storage.mlcdn.com/account_image/958330/0OpCmydxj01SEFXO54Jr1WOrPLK15IhrfL3CzQdj.png" alt="social.plus" width="140" style="display:block; border:0;" />
+                  </a>
+                </td>
+                <td class="header-cell-btn" align="right" valign="middle" style="white-space:nowrap;">
+                  <a href="https://social.plus/product-updates" target="_blank" class="btn-outline" style="display:inline-block; padding:10px 10px; border:2px solid #3b41ec; border-radius:6px; font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; font-weight:600; color:#3b41ec; text-decoration:none; line-height:20px; white-space:nowrap;">Explore All Updates</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- INTRO TEXT -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="body-bg" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
+        <tr>
+          <td class="row" style="padding:24px 40px 24px 40px;">
+            <p class="text-body" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:400; color:#414347; line-height:26px;">We're kicking off 2026 with updates designed to give you better visibility into your content and streamline how you manage your live streams.</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- HERO IMAGE -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="body-bg" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
+        <tr>
+          <td align="center">
+            <a href="https://social.plus/product-updates" target="_blank">
+              <img src="https://placehold.co/750x425/e8eaff/3b41ec?text=PRODUCT+UPDATE%0AJanuary+2026" alt="Product Update — January 2026" width="750" style="display:block; width:100%; max-width:750px; height:auto; border:0;" />
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- BODY INTRO -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="body-bg" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
+        <tr>
+          <td class="row" style="padding:24px 40px 8px 40px;">
+            <p class="text-body" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:400; color:#414347; line-height:26px;">Whether you're tracking performance, monitoring your dashboard, or staying on top of notifications, these new features will help you work smarter and faster. Read on to see what we've launched this month or see the recap above.</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- TIER 1: Enhanced Live Stream Analytics -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="body-bg" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#f9f9f9;">
+        <tr>
+          <td align="center" style="padding:32px 0 0 0;">
+            <img src="https://placehold.co/750x425/111111/ffffff?text=Live+Stream+Analytics%0AReal-Time+Dashboard" alt="Enhanced Live Stream Analytics with Real-Time Insights" width="750" style="display:block; width:100%; max-width:750px; height:auto; border:0;" />
+          </td>
+        </tr>
+        <tr>
+          <td class="row" style="padding:24px 40px 8px 40px;">
+            <h2 class="text-dark" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:22px; font-weight:700; color:#111111; line-height:30px;">Introducing Enhanced Live Stream Analytics with Real-Time Insights</h2>
+          </td>
+        </tr>
+        <tr>
+          <td class="row" style="padding:0 40px 24px 40px;">
+            <p class="text-body" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:400; color:#414347; line-height:26px;">See how your live streams perform with real-time metrics on viewers, engagement, watch time, and audience retention patterns. Compare streams to identify what works and optimize your content strategy.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="row" align="center" style="padding:0 40px 32px 40px;">
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://social.plus/product-updates/release-notes/livestream-analytics" style="height:44px;v-text-anchor:middle;width:340px;" arcsize="14%" strokecolor="#3b41ec" strokeweight="2px" fillcolor="#ffffff">
+              <w:anchorlock/>
+              <center style="color:#3b41ec;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:14px;font-weight:600;">Learn more about Live Stream Analytics</center>
+            </v:roundrect>
+            <![endif]-->
+            <!--[if !mso]><!-->
+            <a href="https://social.plus/product-updates/release-notes/livestream-analytics" target="_blank" class="btn-outline" style="display:inline-block; padding:10px 24px; border:2px solid #3b41ec; border-radius:6px; font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; font-weight:600; color:#3b41ec; text-decoration:none; line-height:20px;">Learn more about Live Stream Analytics</a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- TIER 3: Content Performance Widgets (image left, text right) -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="body-bg" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
+        <tr>
+          <td class="row" style="padding:32px 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="mobile-stack" width="335" valign="top" style="padding-right:20px;">
+                  <img class="img-rounded" src="https://placehold.co/315x210/f9f9f9/414347?text=Content+Performance%0AWidgets" alt="Content Performance Widgets and Reports on Dashboard" width="315" style="display:block; width:315px; height:auto; border:0; border-radius:16px;" />
+                </td>
+                <td class="mobile-stack" width="335" valign="middle">
+                  <h3 class="text-dark" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:18px; font-weight:700; color:#111111; line-height:26px; padding-bottom:4px;">Content Performance Widgets and Reports on Dashboard</h3>
+                  <p style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:13px; font-weight:600; color:#717275; line-height:18px; padding-bottom:8px;"><span style="display:inline-block; padding:2px 8px; border-radius:4px; background-color:#8abfff; color:#222222; font-size:12px; font-weight:600; line-height:18px;">Analytics</span></p>
+                  <p class="text-body" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:400; color:#414347; line-height:26px;">Drill into individual post performance that track impressions, reach, and engagement trends over time. Compare up to 4 posts side by side to identify what resonates with your audiences.</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- TIER 3: Network-Level Livestream Notification Control (text left, image right) -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="body-bg" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#f9f9f9;">
+        <tr>
+          <td class="row" style="padding:32px 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="mobile-stack" width="335" valign="middle" style="padding-right:20px;">
+                  <h3 class="text-dark" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:18px; font-weight:700; color:#111111; line-height:26px; padding-bottom:4px;">Network-Level Livestream Notification Control</h3>
+                  <p style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:13px; font-weight:600; color:#717275; line-height:18px; padding-bottom:8px;"><span style="display:inline-block; padding:2px 8px; border-radius:4px; background-color:#fff4d9; color:#ffd500; font-size:12px; font-weight:600; line-height:18px;">Video</span></p>
+                  <p class="text-body" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:400; color:#414347; line-height:26px;">Admins can disable push notifications for standalone livestreams at the network-level to prevent accidental or excessive notifications.</p>
+                </td>
+                <td class="mobile-stack" width="335" valign="top">
+                  <img class="img-rounded" src="https://placehold.co/315x210/f9f9f9/414347?text=Notification%0AControl" alt="Network-Level Livestream Notification Control" width="315" style="display:block; width:315px; height:auto; border:0; border-radius:16px;" />
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- CLOSING TEXT -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="body-bg" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
+        <tr>
+          <td class="row" style="padding:24px 40px 32px 40px;">
+            <p class="text-body" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:600; color:#414347; line-height:26px; text-align:center;">Thank you for being a part of the social.plus community. Keep an eye out for next month's update!</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- FOOTER -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="body-bg" style="background-color:#f5f5f5;">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg footer-border" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff; border-top:1px solid #e7e7e7;">
+        <tr>
+          <td class="row" style="padding:32px 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="mobile-stack" width="50%" valign="top">
+                  <p class="text-dark" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:700; color:#111111; line-height:24px; padding-bottom:8px;">social.plus</p>
+                  <p class="text-secondary" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; font-weight:400; color:#717275; line-height:22px; padding-bottom:16px;">The best version of every app is Social+</p>
+                  <!-- Social icons (colored rounded squares with white logos) -->
+                  <div style="padding-bottom:20px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="padding-right:8px;">
+                        <a href="https://www.linkedin.com/company/socialpluscorp/" target="_blank" style="display:inline-block; width:36px; height:36px; border-radius:6px; background-color:#0A66C2; text-align:center; line-height:36px; text-decoration:none;"><img src="https://cdn.jsdelivr.net/gh/gauravghongde/social-icons@master/PNG/White/LinkedIN_white.png" alt="LinkedIn" width="20" height="20" style="border:0; vertical-align:middle;" /></a>
+                      </td>
+                      <td style="padding-right:8px;">
+                        <a href="https://www.instagram.com/wearesocial.plus" target="_blank" style="display:inline-block; width:36px; height:36px; border-radius:6px; background-color:#E4405F; text-align:center; line-height:36px; text-decoration:none;"><img src="https://cdn.jsdelivr.net/gh/gauravghongde/social-icons@master/PNG/White/Instagram_white.png" alt="Instagram" width="20" height="20" style="border:0; vertical-align:middle;" /></a>
+                      </td>
+                      <td style="padding-right:8px;">
+                        <a href="https://x.com/socialpluscorp" target="_blank" style="display:inline-block; width:36px; height:36px; border-radius:6px; background-color:#000000; text-align:center; line-height:36px; font-family:'Inter',Helvetica,Arial,sans-serif; font-size:15px; font-weight:700; color:#ffffff; text-decoration:none;">X</a>
+                      </td>
+                      <td style="padding-right:8px;">
+                        <a href="https://www.youtube.com/@wearesocialplus" target="_blank" style="display:inline-block; width:36px; height:36px; border-radius:6px; background-color:#FF0000; text-align:center; line-height:36px; text-decoration:none;"><img src="https://cdn.jsdelivr.net/gh/gauravghongde/social-icons@master/PNG/White/Youtube_white.png" alt="YouTube" width="20" height="20" style="border:0; vertical-align:middle;" /></a>
+                      </td>
+                      <td>
+                        <a href="https://github.com/Amityco" target="_blank" style="display:inline-block; width:36px; height:36px; border-radius:6px; background-color:#333333; text-align:center; line-height:36px; text-decoration:none;"><img src="https://cdn.jsdelivr.net/gh/gauravghongde/social-icons@master/PNG/White/Github_white.png" alt="GitHub" width="20" height="20" style="border:0; vertical-align:middle;" /></a>
+                      </td>
+                    </tr>
+                  </table>
+                  </div>
+                </td>
+                <td class="mobile-stack" width="50%" valign="top" align="left" style="text-align:left;">
+                  <p class="text-secondary" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; font-weight:400; color:#717275; line-height:22px; padding-bottom:24px; text-align:left;">If you no longer wish to receive this newsletter, you can unsubscribe here:</p>
+                  <p style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; line-height:22px; text-align:left;">
+                    <a href="{$unsubscribe}" class="link-brand" style="color:#3b41ec; text-decoration:underline;">Unsubscribe</a>
+                    <span class="footer-separator" style="color:#b3b3b3; padding:0 8px;">|</span>
+                    <a href="{$preferences}" class="link-brand" style="color:#3b41ec; text-decoration:underline;">Update preferences</a>
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
