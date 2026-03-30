@@ -48,13 +48,15 @@ Fetch all three — they work together:
 
 ```
 https://github.com/socialplus-tools/marketing-team/blob/main/emails/product-update-newsletter-spec.md
-https://github.com/socialplus-tools/marketing-team/blob/main/emails/product-update-newsletter-components.md
+https://github.com/socialplus-tools/marketing-team/blob/main/emails/product-update-newsletter-structure.md
+https://github.com/socialplus-tools/marketing-team/blob/main/emails/product-update-newsletter-blocks.md
 https://github.com/socialplus-tools/marketing-team/blob/main/emails/product-update-newsletter-assembly.md
 https://github.com/socialplus-tools/marketing-team/blob/main/emails/emails.md
 ```
 
 - `product-update-newsletter-spec.md` — MailerLite technical requirements, brand colors, typography, merge tags, image placeholder convention
-- `product-update-newsletter-components.md` — complete HTML for every component: base shell, preheader, header, intro, hero, tiers 1-4, divider, CTA, closing, footer. Follow this exactly when generating HTML.
+- `product-update-newsletter-structure.md` — HTML for: base shell, preheader, header, intro text, hero image
+- `product-update-newsletter-blocks.md` — HTML for: tiers 1-4, divider, CTA button, closing text, footer. Follow both components files exactly when generating HTML.
 - `product-update-newsletter-assembly.md` — assembly orders for both email types and the pre-delivery checklist
 - `emails.md` — email content strategy: subject line rules, body structure, CTA best practices, email type guidelines
 
