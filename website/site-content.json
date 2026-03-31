@@ -1,14 +1,8 @@
 {
   "_meta": {
-    "generatedAt": "2026-03-31T10:05:35.146Z",
-    "pageCount": 33,
-    "method": "webflow-data-api",
-    "errors": [
-      "/industry/media-and-news",
-      "/industry/edtech",
-      "/industry/gaming",
-      "/industry/betting"
-    ]
+    "generatedAt": "2026-03-31T10:08:10.674Z",
+    "pageCount": 37,
+    "method": "webflow-data-api"
   },
   "pages": [
     {
@@ -148,6 +142,30 @@
       "metaTitle": "Fintech - social.plus for the Fintech industry",
       "metaDescription": "Help users learn, engage, and make confident decisions through in-app discussion, education, and shared insights.",
       "content": "## Use cases that build confidence and long-term engagement\n## Everything you need to make your app social-powered\n## Leading brands grow with social.plus"
+    },
+    {
+      "url": "/industry/media-and-news",
+      "metaTitle": "Media and News - social.plus for the Media and News industry",
+      "metaDescription": "Transform viewers and readers into contributors through in-app discussion, storytelling, and real-time interaction.",
+      "content": "## Use cases that turn readers into participants\n## Everything you need to make your media app social-powered\n## Leading brands grow with social.plus"
+    },
+    {
+      "url": "/industry/edtech",
+      "metaTitle": "Edtech - social.plus for the Edtech industry",
+      "metaDescription": "Transform viewers and readers into contributors through in-app discussion, storytelling, and real-time interaction.",
+      "content": "## Use cases that improve completion and outcomes\n## Everything you need to make your learning app social-powered\n## Leading brands grow with social.plus"
+    },
+    {
+      "url": "/industry/gaming",
+      "metaTitle": "Gaming - social.plus for the Gaming industry",
+      "metaDescription": "Keep players engaged between sessions with social features that turn play into participation.",
+      "content": "## Use cases that keep players coming back\n## Everything you need to make your app social-powered\n## Leading brands grow with social.plus"
+    },
+    {
+      "url": "/industry/betting",
+      "metaTitle": "Betting - social.plus for the Betting industry",
+      "metaDescription": "Bring bettors together with real-time discussion, shared insights, and social experiences — all inside your app.",
+      "content": "## Use cases that keep bettors engaged between bets\n## Everything you need to make your app social-powered\n## Leading brands grow with social.plus"
     },
     {
       "url": "/use-case/live-chat",
