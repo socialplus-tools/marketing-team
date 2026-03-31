@@ -18,12 +18,22 @@ Most tasks need references from more than one domain. Use this table to determin
 | Written content (articles, blog posts, scripts, copy) | `messaging/brain.md` |
 | Visual output (HTML, CSS, components, decks, emails) | `messaging/brain.md` + `design-system/brain.md` |
 | Social media posts | `messaging/brain.md` + `design-system/brain.md` — brain.md routes to `social-posts.md` for platform specs |
-| HTML emails / newsletters | `messaging/brain.md` (for terminology + tone) + `design-system/brain.md` (for colors + typography) |
+| HTML emails / newsletters | **Use the newsletters skill** (see Available Skills below). It fetches `messaging/brain.md`, `design-system/colors-palette.md`, `design-system/colors-usage.md`, and all email template files automatically. |
 | UI copy (buttons, errors, tooltips, empty states) | `messaging/brain.md` — brain.md routes to `ui-micro-copy.md` |
 | Website audit or content analysis | `website/site-content.json` + `messaging/brain.md` |
 | Competitive content (comparisons, differentiators) | `messaging/brain.md` — ensure both `positioning.md` and `value-story.md` are loaded |
 
 If your skill's SKILL.md already specifies which domain router to fetch, follow that. Use this table to decide whether you also need the *other* domain router.
+
+## Available skills
+
+Skills are pre-built instruction sets for recurring task types. When a task matches, fetch the skill's SKILL.md first and follow it — it handles all routing and generation steps.
+
+| Skill | Trigger | SKILL.md |
+|---|---|---|
+| **newsletters** | Any email HTML output — product update emails, feature launch announcements, campaign emails, newsletters | `skills/skills/newsletters/SKILL.md` |
+
+Fetch skill files using the same `github.com/.../blob/...` URL pattern as all other files.
 
 ## Precedence rules
 
