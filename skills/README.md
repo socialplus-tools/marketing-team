@@ -12,7 +12,7 @@ Shared plugin for the marketing team. Ensures all content Claude produces aligns
 | blog-seo-content | SEO-optimized blog posts, thought leadership articles, and long-form content. |
 | social-media | Platform-specific posts for LinkedIn, Instagram, and X. |
 | campaign-copy | Ad copy, campaign landing pages, and paid media content. |
-| newsletters | Generates MailerLite-compatible HTML emails from monthly product update docs. |
+| newsletters | Generates MailerLite-compatible HTML emails — product update emails, feature launch announcements, campaign emails, and one-off marketing emails. |
 | case-study | Customer stories and success case studies. |
 
 ### Design & analysis

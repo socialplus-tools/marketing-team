@@ -7,21 +7,17 @@ description: Compare new product releases or monthly updates against the current
 
 Compares social.plus product updates (release notes, monthly updates) against the current website content to identify which marketing pages are missing new features and need updating.
 
-## Step 0: Fetch the main brain
+## What to do
 
-Fetch the main brain for cross-domain routing, precedence rules, and the compliance check you must run before delivering:
-
+1. **Fetch the main brain** for cross-domain routing, precedence rules, and the compliance check:
 ```
 https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
 ```
-
-## How it works
-
-1. **Load current site content** from `website/site-content.json` in this repo (or fetch the raw file from GitHub)
-2. **Take the product update** — a release note, monthly product update, or changelog entry provided by the user
-3. **Cross-reference** every new feature/capability mentioned in the update against every page in the JSON
-4. **Output a gap report** showing which pages should mention this feature but currently don't
-5. **Draft copy suggestions** for each gap, matching the existing page's tone and structure
+2. **Load current site content** from `website/site-content.json` in this repo (or fetch the raw file from GitHub)
+3. **Take the product update** — a release note, monthly product update, or changelog entry provided by the user
+4. **Cross-reference** every new feature/capability mentioned in the update against every page in the JSON
+5. **Output a gap report** showing which pages should mention this feature but currently don't
+6. **Draft copy suggestions** for each gap, matching the existing page's tone and structure
 
 ## Site content reference
 
@@ -143,11 +139,11 @@ Priority: 🟡 Medium — livestream use case page omits pre-stream planning
 
 If no gaps are found, say so clearly: "✅ No gaps found — the website already reflects this update."
 
-### Used skills (always last)
+### Files loaded (always last)
 
 Always end the report listing which brand guideline files you actually read and applied. Only list files you loaded — if a file was unavailable or empty, don't list it.
 
-Used skills:
+Files loaded:
 [list only the files you successfully loaded from messaging/]
 
 ## Instructions for Claude
