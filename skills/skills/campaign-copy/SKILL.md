@@ -21,12 +21,12 @@ This skill produces high-converting ad copy and campaign landing page content fo
 
 1. Fetch the main brain for cross-domain routing, precedence rules, and the compliance check:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 ```
 
 2. Fetch the messaging router:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 ```
 
 3. Follow the messaging router's **"Short-form content that compares, differentiates, or sells"** routing. This loads:
@@ -42,7 +42,7 @@ https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
 
 6. If the landing page needs visual design, also fetch:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/design-system/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/design-system/brain.md
 ```
 
 ## Ad copy guidelines

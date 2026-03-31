@@ -22,12 +22,12 @@ This skill produces long-form, brand-aligned content for the social.plus blog. T
 
 1. Fetch the main brain for cross-domain routing, precedence rules, and the compliance check:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 ```
 
 2. Fetch the messaging router:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 ```
 
 3. Follow the messaging router's **"Long-form content"** routing. This loads:
@@ -40,7 +40,7 @@ https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
 
 5. If the article needs awareness of what the website already says (to avoid contradicting it or to link to relevant pages), also fetch:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/website/site-content.json
+https://github.com/cruciate-hub/marketing-team/blob/main/website/site-content.json
 ```
 
 ## Webflow CMS field mapping

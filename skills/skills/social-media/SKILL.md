@@ -21,12 +21,12 @@ This skill produces platform-specific social media content for social.plus. Each
 
 1. Fetch the main brain for cross-domain routing, precedence rules, and the compliance check:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 ```
 
 2. Fetch the messaging router:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 ```
 
 3. Follow the messaging router's **"Social media posts"** routing. This loads:
@@ -38,7 +38,7 @@ https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
 
 5. If the post needs visual assets or image specs, also fetch:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/design-system/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/design-system/brain.md
 ```
 Follow its routing for colors, typography, and imagery guidelines.
 

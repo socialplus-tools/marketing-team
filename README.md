@@ -9,7 +9,7 @@ Shared plugin marketplace and brand reference for the marketing team. Skills fet
 3. Next to **Personal plugins**, click **+**
 4. Click **Browse plugins** → select the **Personal** tab
 5. Click **+** → select **Add marketplace**
-6. Enter `socialplus-tools/marketing-team` → click **Sync**
+6. Enter `cruciate-hub/marketing-team` → click **Sync**
 7. Click **Install** on the **social-plus-marketing** plugin
 
 When new skills are added to the plugin, click the **three dots** next to the marketplace name to refresh, then **Update** the plugin.
@@ -41,7 +41,7 @@ When new skills are added to the plugin, click the **three dots** next to the ma
 |---|---|
 | [`brain.md`](./brain.md) | Main brain — cross-domain routing, precedence rules, compliance check |
 | [`messaging/`](./messaging) | Brand messaging files — tone, terminology, positioning, narrative, boilerplates, UI micro-copy |
-| [`design-system/`](./design-system) | Full visual design system — colors, typography, spacing, buttons, shadows, layout, accessibility, and more. [View brand guidelines live](https://socialplus-tools.github.io/marketing-team/design-system/brand-guidelines.html) |
+| [`design-system/`](./design-system) | Full visual design system — colors, typography, spacing, buttons, shadows, layout, accessibility, and more. [View brand guidelines live](https://cruciate-hub.github.io/marketing-team/design-system/brand-guidelines.html) |
 | [`assets/`](./assets) | Official logo SVGs |
 | [`emails/`](./emails) | Email template reference, strategy guide, and HTML examples |
 | [`website/`](./website) | Live website content JSON (auto-updated on every Webflow publish via Cloudflare Worker) |

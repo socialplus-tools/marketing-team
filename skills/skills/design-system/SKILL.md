@@ -21,19 +21,19 @@ This skill provides the full social.plus design system reference. The source of 
 
 1. Fetch the main brain for cross-domain routing, precedence rules, and the compliance check:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 ```
 
 2. Fetch the design system router:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/design-system/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/design-system/brain.md
 ```
 
 3. Follow the design system router's instructions — it tells you which additional files to fetch based on the user's task.
 
 4. If the output includes any text content (headings, labels, CTAs, descriptions), also fetch:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 ```
 
 5. Before delivering, run the compliance check from the main brain.

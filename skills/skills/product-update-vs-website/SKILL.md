@@ -11,7 +11,7 @@ Compares social.plus product updates (release notes, monthly updates) against th
 
 1. **Fetch the main brain** for cross-domain routing, precedence rules, and the compliance check:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 ```
 2. **Load current site content** from `website/site-content.json` in this repo (or fetch the raw file from GitHub)
 3. **Take the product update** — a release note, monthly product update, or changelog entry provided by the user
@@ -24,7 +24,7 @@ https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
 The site content JSON is maintained automatically by a Cloudflare Worker that regenerates it on every Webflow site publish. It lives at:
 
 **Repo path:** `website/site-content.json`
-**GitHub URL:** `https://github.com/socialplus-tools/marketing-team/blob/main/website/site-content.json`
+**GitHub URL:** `https://github.com/cruciate-hub/marketing-team/blob/main/website/site-content.json`
 
 The JSON structure:
 ```json
@@ -151,7 +151,7 @@ Files loaded:
 1. Always load the site-content.json first. If running in an environment with file access (Cowork, Claude Desktop), read it from the local repo. Otherwise, fetch from the raw GitHub URL.
 2. **Load the brand messaging guidelines** by fetching the router file first, then the files it specifies:
    ```
-   https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
+   https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
    ```
    At minimum, fetch `terminology.md`, `tone.md`, `positioning.md`, and `boilerplates.md` from the base URL in that router. All suggested copy must follow these guidelines.
 3. Read the full product update the user provides.

@@ -23,14 +23,14 @@ This skill gives you full awareness of what the social.plus marketing website sa
 Fetch the main brain for cross-domain routing, precedence rules, and the compliance check:
 
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 ```
 
 ## Step 1: Load the site content
 
 Fetch the site content JSON using WebFetch:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/website/site-content.json
+https://github.com/cruciate-hub/marketing-team/blob/main/website/site-content.json
 ```
 
 The JSON structure:
@@ -60,7 +60,7 @@ This skill covers **37 marketing pages only** — product pages, feature pages, 
 
 For any analysis that involves evaluating messaging quality, suggesting copy, or checking brand consistency, also fetch the brand routing file:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 ```
 Follow its instructions to load the relevant guideline files. Not every query needs this — simple lookups ("what does page X say about Y") don't. But audits, gap analysis, and copy suggestions always do.
 

@@ -21,7 +21,7 @@ renders consistently across all major clients.
 ## HTML Email Structure
 
 The base HTML email template is available as a live preview:
-[View email-template.html](https://socialplus-tools.github.io/marketing-team/emails/product-update-newsletter-examples/email-template.html)
+[View email-template.html](https://cruciate-hub.github.io/marketing-team/emails/product-update-newsletter-examples/email-template.html)
 
 ---
 

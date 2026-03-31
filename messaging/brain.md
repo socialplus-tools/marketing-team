@@ -3,14 +3,14 @@
 This file is the entry point for all social.plus brand-aligned content tasks. It tells you which files to fetch based on what the user needs.
 
 All files are hosted at:
-`https://github.com/socialplus-tools/marketing-team/blob/main/messaging/`
+`https://github.com/cruciate-hub/marketing-team/blob/main/messaging/`
 
 **Warning:** Always use `github.com/.../blob/...` URLs when fetching. Never convert to `raw.githubusercontent.com` or `api.github.com` — both are blocked by network egress restrictions and will fail.
 
 ## How to use this file
 
 1. You fetched this file first. Good.
-2. Also fetch the main brain if you haven't already: `https://github.com/socialplus-tools/marketing-team/blob/main/brain.md` — it has cross-domain routing, precedence rules, and the compliance check you must run before delivering.
+2. Also fetch the main brain if you haven't already: `https://github.com/cruciate-hub/marketing-team/blob/main/brain.md` — it has cross-domain routing, precedence rules, and the compliance check you must run before delivering.
 3. Read the user's request.
 4. Match it against the routing table below.
 5. Fetch the listed files using WebFetch on the GitHub blob URLs above.
@@ -31,7 +31,7 @@ All files are hosted at:
 
 ### Social media posts (LinkedIn, Instagram, X)
 - `boilerplates.md` — Standardized descriptions as starting points.
-- Also fetch from the design-system domain: `https://github.com/socialplus-tools/marketing-team/blob/main/design-system/social-posts.md` — Platform-specific format specs, character limits, copy structure templates, visual asset guidelines. This file has precedence over `tone.md` for platform-specific tone and formatting.
+- Also fetch from the design-system domain: `https://github.com/cruciate-hub/marketing-team/blob/main/design-system/social-posts.md` — Platform-specific format specs, character limits, copy structure templates, visual asset guidelines. This file has precedence over `tone.md` for platform-specific tone and formatting.
 
 ### Long-form content (blog posts, landing pages, thought leadership, whitepapers, case studies, press releases)
 - `narrative.md` — Messaging hierarchy and 5-step narrative structure.

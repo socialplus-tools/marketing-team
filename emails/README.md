@@ -6,6 +6,6 @@ Email templates, strategy guides, and examples for the social.plus marketing tea
 
 | File | Description |
 |---|---|
-| [Email Template](https://socialplus-tools.github.io/marketing-team/emails/product-update-newsletter-examples/email-template.html) | Base HTML email template |
-| [January 2026](https://socialplus-tools.github.io/marketing-team/emails/product-update-newsletter-examples/january-2026.html) | January 2026 edition |
-| [February 2026](https://socialplus-tools.github.io/marketing-team/emails/product-update-newsletter-examples/february-2026.html) | February 2026 edition |
+| [Email Template](https://cruciate-hub.github.io/marketing-team/emails/product-update-newsletter-examples/email-template.html) | Base HTML email template |
+| [January 2026](https://cruciate-hub.github.io/marketing-team/emails/product-update-newsletter-examples/january-2026.html) | January 2026 edition |
+| [February 2026](https://cruciate-hub.github.io/marketing-team/emails/product-update-newsletter-examples/february-2026.html) | February 2026 edition |

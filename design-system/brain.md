@@ -3,19 +3,19 @@
 This file is the entry point for all social.plus visual design tasks. It tells you which files to fetch based on what you're creating.
 
 All files are hosted at:
-`https://github.com/socialplus-tools/marketing-team/blob/main/design-system/`
+`https://github.com/cruciate-hub/marketing-team/blob/main/design-system/`
 
 **Warning:** Always use `github.com/.../blob/...` URLs when fetching. Never convert to `raw.githubusercontent.com` or `api.github.com` — both are blocked by network egress restrictions and will fail.
 
 ## How to use this file
 
 1. You fetched this file first. Good.
-2. Also fetch the main brain if you haven't already: `https://github.com/socialplus-tools/marketing-team/blob/main/brain.md` — it has cross-domain routing, precedence rules, and the compliance check you must run before delivering.
+2. Also fetch the main brain if you haven't already: `https://github.com/cruciate-hub/marketing-team/blob/main/brain.md` — it has cross-domain routing, precedence rules, and the compliance check you must run before delivering.
 3. Read the user's request.
 4. Match it against the routing table below.
 5. Fetch the listed files using WebFetch on the GitHub blob URLs above.
 6. Apply everything you fetch. Design tokens are non-negotiable.
-7. **If the output includes any text content** (headings, labels, descriptions, CTAs), you also need the messaging router: `https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md` — follow its instructions to fetch terminology and tone files. Visual output without correct brand language is incomplete.
+7. **If the output includes any text content** (headings, labels, descriptions, CTAs), you also need the messaging router: `https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md` — follow its instructions to fetch terminology and tone files. Visual output without correct brand language is incomplete.
 
 ## Routing table
 

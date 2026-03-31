@@ -21,19 +21,19 @@ This skill ensures all social.plus content aligns with official brand messaging.
 
 1. Fetch the main brain for cross-domain routing, precedence rules, and the compliance check:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 ```
 
 2. Fetch the messaging router:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 ```
 
 3. Follow the messaging router's instructions — it tells you which additional files to fetch based on the user's task.
 
 4. If the output includes any visual styling (HTML, CSS, colors, layout), also fetch:
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/design-system/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/design-system/brain.md
 ```
 
 5. Before delivering, run the compliance check from the main brain.

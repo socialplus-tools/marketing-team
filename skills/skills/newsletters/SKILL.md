@@ -23,7 +23,7 @@ Generate MailerLite-compatible responsive HTML emails. This skill handles two di
 Fetch the main brain for cross-domain routing, precedence rules, and the compliance check you must run before delivering:
 
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 ```
 
 ## Step 1: Fetch brand guidelines
@@ -31,7 +31,7 @@ https://github.com/socialplus-tools/marketing-team/blob/main/brain.md
 Fetch the messaging router to get terminology and tone:
 
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/messaging/brain.md
+https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 ```
 
 Follow its "Any content task" routing to fetch `terminology.md` and `tone.md`. For email subject lines and body copy, also check if "Short-form content" routing applies.
@@ -39,8 +39,8 @@ Follow its "Any content task" routing to fetch `terminology.md` and `tone.md`. F
 Fetch the color system directly (emails need hex values, not CSS variables):
 
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/design-system/colors-palette.md
-https://github.com/socialplus-tools/marketing-team/blob/main/design-system/colors-usage.md
+https://github.com/cruciate-hub/marketing-team/blob/main/design-system/colors-palette.md
+https://github.com/cruciate-hub/marketing-team/blob/main/design-system/colors-usage.md
 ```
 
 ## Step 2: Fetch the email template references
@@ -48,11 +48,11 @@ https://github.com/socialplus-tools/marketing-team/blob/main/design-system/color
 Fetch all three — they work together:
 
 ```
-https://github.com/socialplus-tools/marketing-team/blob/main/emails/product-update-newsletter-spec.md
-https://github.com/socialplus-tools/marketing-team/blob/main/emails/product-update-newsletter-structure.md
-https://github.com/socialplus-tools/marketing-team/blob/main/emails/product-update-newsletter-blocks.md
-https://github.com/socialplus-tools/marketing-team/blob/main/emails/product-update-newsletter-assembly.md
-https://github.com/socialplus-tools/marketing-team/blob/main/emails/emails.md
+https://github.com/cruciate-hub/marketing-team/blob/main/emails/product-update-newsletter-spec.md
+https://github.com/cruciate-hub/marketing-team/blob/main/emails/product-update-newsletter-structure.md
+https://github.com/cruciate-hub/marketing-team/blob/main/emails/product-update-newsletter-blocks.md
+https://github.com/cruciate-hub/marketing-team/blob/main/emails/product-update-newsletter-assembly.md
+https://github.com/cruciate-hub/marketing-team/blob/main/emails/emails.md
 ```
 
 - `product-update-newsletter-spec.md` — MailerLite technical requirements, brand colors, typography, merge tags, image placeholder convention
@@ -78,11 +78,11 @@ Use when: the user asks for a campaign email, one-off announcement, promotional 
 
 - Fetch and use the base HTML template:
   ```
-  https://github.com/socialplus-tools/marketing-team/blob/main/emails/product-update-newsletter-examples/email-template.html
+  https://github.com/cruciate-hub/marketing-team/blob/main/emails/product-update-newsletter-examples/email-template.html
   ```
 - Fetch `boilerplates.md` for standardized descriptions and elevator pitches — use these as starting points for body copy:
   ```
-  https://github.com/socialplus-tools/marketing-team/blob/main/messaging/boilerplates.md
+  https://github.com/cruciate-hub/marketing-team/blob/main/messaging/boilerplates.md
   ```
 - Apply `terminology.md` and `tone.md` for copy.
 - Apply `colors-palette.md` and `colors-usage.md` for all color values (hex only — no CSS variables).

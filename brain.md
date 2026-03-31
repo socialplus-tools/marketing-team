@@ -5,7 +5,7 @@
 This is the master router for all social.plus marketing content. Every skill fetches this file alongside its domain-specific router to get cross-domain awareness, precedence rules, and the compliance check.
 
 All reference files are hosted at:
-`https://github.com/socialplus-tools/marketing-team/blob/main/`
+`https://github.com/cruciate-hub/marketing-team/blob/main/`
 
 **Warning:** Always use `github.com/.../blob/...` URLs when fetching. Never convert to `raw.githubusercontent.com` or `api.github.com` — both are blocked by network egress restrictions and will fail.
 
