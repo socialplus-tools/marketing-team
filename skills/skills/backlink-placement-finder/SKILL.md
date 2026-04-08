@@ -309,15 +309,12 @@ This verification step is what separates a usable placement from a false positiv
 
 ### 3. Match Against Anchors & Inventory (Two-Phase Approach)
 
-**Locating the reference files (robust lookup):** The two reference files (`anchors.md` and `content-inventory.md`) live in a `references/` subfolder, but their absolute path varies depending on whether the skill is running from the deployed location or the staging area. Try the following paths in order, and use the first one that exists:
+**Locating the reference files:** The two reference files (`anchors.md` and `content-inventory.md`) live in the `references/` subfolder next to this `SKILL.md`. Read them from the canonical relative path:
 
-1. `<skill_dir>/references/anchors.md` — relative to wherever the skill itself is running from. This is the canonical location.
-2. `/sessions/intelligent-practical-sagan/mnt/.claude/skills/backlink-placement-finder/references/anchors.md` — deployed skill location.
-3. `/sessions/intelligent-practical-sagan/mnt/outputs/backlink-placement-finder/references/anchors.md` — staging area used during skill development.
-4. `/sessions/intelligent-practical-sagan/mnt/outputs/backlink-placement-finder-references/anchors.md` — flat staging fallback.
-5. **Last resort:** Use `Glob` to search `**/anchors.md` under `/sessions/intelligent-practical-sagan/mnt/` and use whichever match has the most recent modification time. Same for `content-inventory.md`.
+- `references/anchors.md`
+- `references/content-inventory.md`
 
-If all five lookups fail for either file, surface the failure to Stefan immediately with the paths attempted — do not guess at anchor lists or content inventory. The skill is unusable without these references and Stefan needs to know to redeploy them.
+If either file is missing, surface the failure to Stefan immediately — do not guess at anchor lists or content inventory. The skill is unusable without these references.
 
 **Once located, read both files:**
 - `references/anchors.md` — the approved anchor text list
