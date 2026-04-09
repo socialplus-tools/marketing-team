@@ -104,7 +104,7 @@ After completing the page-by-page scan above, do a **dedicated pricing check**. 
 
 ## Output format
 
-Always start with a brief summary, then list each gap grouped by page. Every entry must follow the exact same structure. Every field on its own line with a single line break between fields. Consistent casing. No variations. No double blank lines between fields.
+Always start with a brief summary, then list each gap grouped by page. Every entry must follow the **exact same structure** — no formatting variations between entries. This is critical because the output is emailed and inconsistent formatting looks unprofessional.
 
 ### Summary (always first)
 
@@ -116,38 +116,45 @@ Found 6 gaps across 6 pages — 1 high priority, 3 medium, 2 low. The primary ga
 
 ### Gap entries (grouped by page)
 
-Each page gets its own section. Use the full clickable URL (https://www.social.plus/...) — never just the path. Every field on its own line. Single line break between fields — no double blank lines.
+Each page gets its own section. The format must be **exactly** as shown below — no variations between entries. This is critical for consistent email rendering.
 
----
+**Format rules:**
+- Page URL as a markdown heading with 🔍 prefix: `🔍 [URL](URL)`
+- Blank line after the URL heading
+- All field labels in **bold** with colon (e.g., `**Feature:**`)
+- **Suggested copy** must be wrapped in a blockquote (`>`) so it renders with a highlight background
+- No horizontal rules (`---`) between entries — the heading + blank line provides enough visual separation
+- Priority uses the colored circle emoji (🔴 🟡 🟢) inline
 
-https://www.social.plus/social/features
-Feature: Event creation and management
-Section: Communities
-Status: Missing — no mention of events anywhere on this page
-Suggested heading: Event Creation and Management
-Suggested copy: Enable admins and moderators to create and manage digital live streams, virtual events, and in-person gatherings. Events surface automatically across group tabs, the Event Hub, and community feeds.
-Priority: 🔴 High — primary features page missing this entirely
+**Example entries:**
 
----
+🔍 [https://www.social.plus/social/features](https://www.social.plus/social/features)
 
-https://www.social.plus/use-case/livestream
-Feature: Event scheduling and RSVPs
-Section: What you get with social.plus
-Status: Could be enhanced — lists live video but no scheduling or RSVPs
-Suggested heading: Event Scheduling & RSVPs
-Suggested copy: Create events in advance, collect RSVPs, and send reminders so your audience is ready when you go live.
+**Feature:** Event creation and management
+**Section:** Communities
+**Status:** Missing — no mention of events anywhere on this page
+**Suggested heading:** Event Creation and Management
+> **Suggested copy:** Enable admins and moderators to create and manage digital live streams, virtual events, and in-person gatherings. Events surface automatically across group tabs, the Event Hub, and community feeds.
 
----
+**Priority:** 🔴 High — primary features page missing this entirely
 
-https://www.social.plus/pricing
-Feature: Event Creation and Management
-Section: Communities (comparison table)
-Status: Missing — no line item for events in the Communities group
-Suggested line item: Event Creation and Management: Core=✓, Max=✓
-Priority: 🟡 Medium — pricing comparison table should list this alongside other community features
-Priority: 🟡 Medium — livestream use case page omits pre-stream planning
+🔍 [https://www.social.plus/use-case/livestream](https://www.social.plus/use-case/livestream)
 
----
+**Feature:** Event scheduling and RSVPs
+**Section:** What you get with social.plus
+**Status:** Could be enhanced — lists live video but no scheduling or RSVPs
+**Suggested heading:** Event Scheduling & RSVPs
+> **Suggested copy:** Create events in advance, collect RSVPs, and send reminders so your audience is ready when you go live.
+
+**Priority:** 🟡 Medium — livestream use case page omits pre-stream planning
+
+🔍 [https://www.social.plus/pricing](https://www.social.plus/pricing)
+
+**Feature:** Event Creation and Management
+**Section:** Communities (comparison table)
+**Status:** Missing — no line item for events in the Communities group
+**Suggested line item:** Event Creation and Management: Core=✓, Max=✓
+**Priority:** 🟡 Medium — pricing comparison table should list this alongside other community features
 
 ### Priority guide
 - 🔴 High — primary features page for this product area is missing the feature entirely
