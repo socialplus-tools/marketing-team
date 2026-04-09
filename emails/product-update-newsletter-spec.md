@@ -66,7 +66,7 @@ Each product module has a background/text color pair used for category badges. A
 
 Badge HTML pattern:
 ```html
-<span style="display:inline-block; padding:2px 8px; border-radius:4px; background-color:MODULE_BG; color:MODULE_TEXT; font-size:12px; font-weight:600; line-height:18px; margin-left:8px; vertical-align:middle;">Module Name</span>
+<span style="display:inline-block; padding:2px 8px; border-radius:4px; background-color:MODULE_BG; color:MODULE_TEXT; font-family:'Inter',Arial,sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; line-height:18px; margin-left:8px; vertical-align:middle;">Module Name</span>
 ```
 
 ---
@@ -114,9 +114,10 @@ Use visible `placehold.co` placeholder images so Bam can visually identify and s
 |------|-----------|-------------|
 | Hero image | 750×425 | `https://placehold.co/750x425/e8eaff/3b41ec?text=HERO+IMAGE` |
 | Tier 1 feature | 750×425 | `https://placehold.co/750x425/e8eaff/3b41ec?text=FEATURE+NAME` |
-| Tier 2 feature | 670×385 | `https://placehold.co/670x385/e8eaff/3b41ec?text=FEATURE+NAME` |
+| Tier 2 feature | 315×210 | `https://placehold.co/315x210/e8eaff/3b41ec?text=FEATURE+NAME` |
 | Tier 3 feature | 315×210 | `https://placehold.co/315x210/e8eaff/3b41ec?text=FEATURE+NAME` |
 
+- ALWAYS generate placehold.co placeholder URLs for every image slot, even when the source document contains no images. Never skip images, never leave img src empty, never use Google-hosted URLs from the source doc.
 - Replace `FEATURE+NAME` with the actual feature name (spaces as `+`)
 - Use `e8eaff` background with `3b41ec` text for all placeholders
 - Always include meaningful `alt` text
@@ -128,4 +129,4 @@ Use visible `placehold.co` placeholder images so Bam can visually identify and s
 
 **Critical rule: all images must be exported as flat rectangles — no border-radius, no borders, no shadows baked into the image file.** The HTML applies `border-radius: 16px` on desktop and `12px` on mobile via the `.img-rounded` CSS class.
 
-Dimensions: 750×425 for hero/Tier 1, 670×385 for Tier 2, 315×210 for Tier 3. Full-width images (hero, Tier 1) have no border-radius. Only Tier 2 and Tier 3 get rounded corners.
+Dimensions: 750×425 for hero/Tier 1, 315×210 for Tier 2, 315×210 for Tier 3. Full-width images (hero, Tier 1) have no border-radius. Only Tier 2 and Tier 3 get rounded corners.

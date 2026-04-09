@@ -41,9 +41,71 @@ Lead feature — full-width image, heading, description, outlined CTA. Use `#f9f
 
 ---
 
-## Component: Tier 2 Feature
+## Component: Tier 2 Feature (Zigzag)
 
-Same as Tier 1 but with `background-color:#ffffff`. Alternate between `#ffffff` and `#f9f9f9` if multiple Tier 2 features.
+Image on one side, text on the other. Alternate direction for each row. No character limit for description. Module tag is a separate `<p>` element — never inline inside the `<h3>`. Use `#ffffff` background. Alternate between `#ffffff` and `#f9f9f9` if multiple Tier 2 features.
+
+**Image Left, Text Right:**
+
+```html
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f5f5;" class="body-bg">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#ffffff;">
+        <tr>
+          <td class="row" style="padding:32px 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="mobile-stack" width="335" valign="top" style="padding-right:20px;">
+                  <img class="img-rounded" src="{{IMAGE_TIER2}}" alt="{{FEATURE_ALT}}" width="315" style="display:block; width:315px; height:auto; border:0; border-radius:16px;" />
+                </td>
+                <td class="mobile-stack" width="335" valign="middle">
+                  <p class="text-secondary" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:#717275; line-height:18px; padding-bottom:8px;">{{MODULE_TAG}}</p>
+                  <h3 class="text-dark" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:18px; font-weight:700; color:#111111; line-height:26px; padding-bottom:4px;">{{FEATURE_HEADING}}</h3>
+                  <p class="text-body" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:400; color:#414347; line-height:26px; padding-bottom:16px;">{{FEATURE_DESCRIPTION}}</p>
+                  <a href="{{FEATURE_CTA_URL}}" target="_blank" class="btn-outline" style="display:inline-block; padding:10px 24px; border:2px solid #3b41ec; border-radius:6px; font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; font-weight:600; color:#3b41ec; text-decoration:none; line-height:20px;">{{FEATURE_CTA_TEXT}}</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+```
+
+**Text Left, Image Right:**
+
+Image is first in the DOM so it stacks on top on mobile. `direction:rtl` on the inner table visually flips it to the right on desktop. Always use this pattern — never just swap the `<td>` elements.
+
+```html
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f5f5;" class="body-bg">
+  <tr>
+    <td align="center">
+      <table role="presentation" class="container container-bg" width="750" cellpadding="0" cellspacing="0" border="0" style="background-color:#f9f9f9;">
+        <tr>
+          <td class="row" style="padding:32px 40px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="direction:rtl;">
+              <tr>
+                <td class="mobile-stack" width="335" valign="middle" style="direction:ltr; padding-left:20px;">
+                  <img class="img-rounded" src="{{IMAGE_TIER2}}" alt="{{FEATURE_ALT}}" width="315" style="display:block; width:315px; height:auto; border:0; border-radius:16px;" />
+                </td>
+                <td class="mobile-stack" width="335" valign="middle" style="direction:ltr;">
+                  <p class="text-secondary" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:#717275; line-height:18px; padding-bottom:8px;">{{MODULE_TAG}}</p>
+                  <h3 class="text-dark" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:18px; font-weight:700; color:#111111; line-height:26px; padding-bottom:4px;">{{FEATURE_HEADING}}</h3>
+                  <p class="text-body" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:400; color:#414347; line-height:26px; padding-bottom:16px;">{{FEATURE_DESCRIPTION}}</p>
+                  <a href="{{FEATURE_CTA_URL}}" target="_blank" class="btn-outline" style="display:inline-block; padding:10px 24px; border:2px solid #3b41ec; border-radius:6px; font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:14px; font-weight:600; color:#3b41ec; text-decoration:none; line-height:20px;">{{FEATURE_CTA_TEXT}}</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+```
 
 ---
 
@@ -66,8 +128,8 @@ Image on one side, text on the other. Alternate direction for each row. Max 280 
                   <img class="img-rounded" src="{{IMAGE_TIER3}}" alt="{{FEATURE_ALT}}" width="315" style="display:block; width:315px; height:auto; border:0; border-radius:16px;" />
                 </td>
                 <td class="mobile-stack" width="335" valign="middle">
+                  <p class="text-secondary" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:#717275; line-height:18px; padding-bottom:8px;">{{MODULE_TAG}}</p>
                   <h3 class="text-dark" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:18px; font-weight:700; color:#111111; line-height:26px; padding-bottom:4px;">{{FEATURE_HEADING}}</h3>
-                  <p class="text-secondary" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:13px; font-weight:600; color:#717275; line-height:18px; padding-bottom:8px;">{{MODULE_TAG}}</p>
                   <p class="text-body" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:400; color:#414347; line-height:26px;">{{FEATURE_DESCRIPTION}}</p>
                 </td>
               </tr>
@@ -97,8 +159,8 @@ Image is first in the DOM so it stacks on top on mobile. `direction:rtl` on the 
                   <img class="img-rounded" src="{{IMAGE_TIER3}}" alt="{{FEATURE_ALT}}" width="315" style="display:block; width:315px; height:auto; border:0; border-radius:16px;" />
                 </td>
                 <td class="mobile-stack" width="335" valign="middle" style="direction:ltr;">
+                  <p class="text-secondary" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:#717275; line-height:18px; padding-bottom:8px;">{{MODULE_TAG}}</p>
                   <h3 class="text-dark" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:18px; font-weight:700; color:#111111; line-height:26px; padding-bottom:4px;">{{FEATURE_HEADING}}</h3>
-                  <p class="text-secondary" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:13px; font-weight:600; color:#717275; line-height:18px; padding-bottom:8px;">{{MODULE_TAG}}</p>
                   <p class="text-body" style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; font-size:16px; font-weight:400; color:#414347; line-height:26px;">{{FEATURE_DESCRIPTION}}</p>
                 </td>
               </tr>
