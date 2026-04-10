@@ -32,9 +32,10 @@ https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 3. Follow the messaging router's **"Social media posts"** routing. This loads:
    - `terminology.md` + `tone.md` (always)
    - `boilerplates.md` (short descriptions and elevator pitches as starting points)
+   - `positioning.md` (company overview, vision, mission, product pillars)
    - `design-system/social-posts.md` (platform-specific format specs, character limits, copy structure — this file has precedence over tone.md for platform-specific tone and formatting)
 
-4. If the post references specific product capabilities or competitive positioning, also follow the **"Short-form content that compares, differentiates, or sells"** routing for `value-story.md`.
+4. Social posts are short-form content, so `value-story.md` is also loaded via the **"Short-form content"** routing. Use it when posts make value claims or reference product capabilities.
 
 5. If the post needs visual assets or image specs, also fetch:
 ```

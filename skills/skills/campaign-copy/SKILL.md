@@ -29,13 +29,11 @@ https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 ```
 
-3. Follow the messaging router's **"Short-form content that compares, differentiates, or sells"** routing. This loads:
+3. Follow the messaging router's **"Short-form content"** routing. This loads:
    - `terminology.md` + `tone.md` (always)
-   - `value-story.md` (differentiation framework, core problems — essential for ad copy)
-
-4. Also follow **"Short-form content"** routing for:
    - `boilerplates.md` (elevator pitches — useful as ad copy starting points)
    - `positioning.md` (product pillars for framing)
+   - `value-story.md` (differentiation framework, core problems — essential for ad copy)
 
 5. If the campaign includes a landing page, also follow **"Long-form content"** routing for:
    - `narrative.md` (messaging hierarchy for page structure)

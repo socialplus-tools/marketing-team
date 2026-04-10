@@ -36,7 +36,7 @@ https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
    - `value-story.md` (differentiation framework, core problems)
    - `positioning.md` (company overview, product pillars)
 
-4. If the article is a comparison piece or competitive content, also follow the **"Short-form content that compares, differentiates, or sells"** routing in the messaging router for `value-story.md`.
+4. `value-story.md` is already loaded via the long-form routing above. For comparison or competitive content, lean on its differentiation framework especially heavily.
 
 5. If the article needs awareness of what the website already says (to avoid contradicting it or to link to relevant pages), also fetch:
 ```

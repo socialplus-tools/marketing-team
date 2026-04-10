@@ -25,12 +25,11 @@ All files are hosted at:
 ### Short-form content (social posts, email subject lines, ad copy, taglines, product descriptions)
 - `boilerplates.md` — Standardized descriptions and elevator pitches as starting points.
 - `positioning.md` — Company overview, vision, mission, product pillars. Needed to frame even short copy accurately.
-
-### Short-form content that compares, differentiates, or sells (ad copy, competitive responses, CTAs with value claims)
-- `value-story.md` — Differentiation framework, core problems we solve, value creation model.
+- `value-story.md` — Differentiation framework, core problems we solve, value creation model. Short copy almost always makes value claims — load this every time.
 
 ### Social media posts (LinkedIn, Instagram, X)
 - `boilerplates.md` — Standardized descriptions as starting points.
+- `positioning.md` — Company overview, vision, mission, product pillars. Needed when posts reference what social.plus is or does.
 - Also fetch from the design-system domain: `https://github.com/cruciate-hub/marketing-team/blob/main/design-system/social-posts.md` — Platform-specific format specs, character limits, copy structure templates, visual asset guidelines. This file has precedence over `tone.md` for platform-specific tone and formatting.
 
 ### Long-form content (blog posts, AEO articles, landing pages, thought leadership, whitepapers, case studies, press releases)
