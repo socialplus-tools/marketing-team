@@ -4,12 +4,7 @@ This file explains how to generate a Google Gemini image prompt for an AEO answe
 
 ## Full style guide
 
-Fetch the complete prompt template, icon table, and worked examples:
-```
-https://github.com/cruciate-hub/marketing-team/blob/main/docs/aeo-image-prompt-template.md
-```
-
-That file contains everything needed to assemble a prompt. This file explains the decision logic.
+The complete prompt template with hex colors, icon reference tables, composition modes, and worked examples is not yet published. It will be added later. For now, this file contains the decision logic for composing prompts — the detailed style guide will be linked here once it is ready.
 
 ## How to generate a prompt
 

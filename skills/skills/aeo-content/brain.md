@@ -21,12 +21,7 @@ Fetch all three:
 ### Generate a hero image prompt
 
 Fetch:
-- `image-generation.md` — Composition mode selection, topic classification, object selection, prompt assembly.
-
-Also fetch the full style guide:
-```
-https://github.com/cruciate-hub/marketing-team/blob/main/docs/aeo-image-prompt-template.md
-```
+- `image-generation.md` — Composition mode selection, topic classification, object selection, prompt assembly. Note: the full visual style guide with icon tables and example prompts is not yet published. It will be linked from `image-generation.md` once ready.
 
 ### Write an article AND generate its image prompt
 
