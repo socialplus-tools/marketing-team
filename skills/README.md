@@ -2,7 +2,7 @@
 
 Shared plugin for the marketing team. Ensures all content Claude produces aligns with the latest brand messaging, design system, and website content.
 
-## Skills (11)
+## Skills (12)
 
 ### Content creation
 
@@ -14,6 +14,7 @@ Shared plugin for the marketing team. Ensures all content Claude produces aligns
 | campaign-copy | Ad copy, campaign landing pages, and paid media content. |
 | newsletters | Generates MailerLite-compatible HTML emails — product update emails, feature launch announcements, campaign emails, and one-off marketing emails. |
 | case-study | Customer stories and success case studies. |
+| aeo-content | AEO (Answer Engine Optimization) articles for the /answers/ collection, structured for AI search engine citation. |
 
 ### Design & analysis
 
