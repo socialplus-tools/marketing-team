@@ -33,7 +33,6 @@ Never accept links from:
 
 ## Anchor Text Rules
 
-- No competitive keywords
 - No branded anchors (brand names)
 - Keep anchor short
 - Never in introductions or conclusions

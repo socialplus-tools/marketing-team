@@ -22,7 +22,7 @@ Score each applicable criterion 1-10:
 | Criterion | What to evaluate |
 |-----------|------------------|
 | **Site Quality** | DR 50+, blog/article/glossary only, no restricted niches |
-| **Anchor Quality** | No competitive keywords, no branded terms, short length |
+| **Anchor Quality** | No branded terms, short length, provides reader value |
 | **Placement** | Not in intro/conclusion, provides reader value |
 | **Text Relevance** | Aligns with article topic and paragraph context |
 | **Writing Quality** | Human-written, matches article tone, no AI phrases |
@@ -52,7 +52,6 @@ Score each applicable criterion 1-10:
 - "Ways to make money" content
 
 ### Anchor Text Rules
-- [ ] No competitive keywords
 - [ ] No branded anchors (brand names)
 - [ ] Short anchor text
 - [ ] Not placed in introduction or conclusion
