@@ -91,15 +91,9 @@ These social.plus articles can only be used as targets for Phase 1 (existing anc
 
 ## Step-by-Step Process
 
-### 0. Quality & Vertical Check via Ahrefs (PREFERRED for Mode A)
+### 0.0. Existing Backlink Check (ALL MODES)
 
-**This step is the new default for live partner sites.** It exists because (a) WebFetch gets blocked by the egress proxy on most partner domains, (b) sitemap crawling wastes time on sites with no topical fit, (c) high-DR-but-spammy partners (PBNs, content farms, celebrity-gossip blogs with inflated DR) leak through without a quality gate, and (d) we shouldn't waste cycles evaluating partners we already have a backlink from.
-
-Skip this step ONLY in Mode B (Google Doc drafts — no live site to evaluate).
-
----
-
-**Step 0.0 — Existing backlink check (run BEFORE any other Ahrefs calls)**
+**This step runs for every mode — Mode A (live URLs), Mode B (Google Doc drafts), and any future mode.** The only input it needs is the partner's root domain, which is available in both modes (Mode A: the URL the user pasted; Mode B: the domain named in the doc title or the doc's intended publication target — ask the user if ambiguous).
 
 We don't want to spend any time on a partner who already links to social.plus. A second link from the same domain provides almost no incremental SEO value and burns the partner relationship for a future, more strategic ask.
 
@@ -122,9 +116,15 @@ order_by: first_seen:desc
 
 **Edge case:** If the existing backlink is on a marketing/footer/template page rather than an editorial article (e.g., "powered by" links, generic resource lists), it may still be worth pursuing an *editorial* placement on a different page of the same partner. Surface this nuance to Stefan rather than auto-declining when the existing link looks non-editorial.
 
-**Why this is Step 0.0 not Step 0.1:** It's the cheapest possible filter (1 cached call covers the entire batch) and it eliminates the most wasted work. Run it first, always.
+**Why this is Step 0.0:** It's the cheapest possible filter (1 cached call covers the entire batch) and it eliminates the most wasted work. Run it first, always, regardless of mode.
 
 ---
+
+### 0. Quality & Vertical Check via Ahrefs (PREFERRED for Mode A)
+
+**This step is the new default for live partner sites.** It exists because (a) WebFetch gets blocked by the egress proxy on most partner domains, (b) sitemap crawling wastes time on sites with no topical fit, and (c) high-DR-but-spammy partners (PBNs, content farms, celebrity-gossip blogs with inflated DR) leak through without a quality gate.
+
+Skip this step ONLY in Mode B (Google Doc drafts — no live site to evaluate). (Note: Step 0.0 — the existing backlink check — still applies to Mode B and must have already run by this point.)
 
 **What Step 0 is NOT:** Step 0 is a *narrowing* tool, not a *bounding* tool. Ahrefs's index is incomplete — small blogs often have 60-80% of pages missing from `top-pages` and `pages-by-traffic`. **Never declare "no fit" from Ahrefs results alone.** When Ahrefs returns sparse or empty results for a partner that *looks* legit by other signals, escalate to a sitemap/Chrome pass (Step 2) before declining.
 
@@ -220,7 +220,7 @@ Stefan will either share **live partner URLs** (Mode A) or **partner draft artic
 
 **Mode A — Live partner URLs.** The user pastes one or more website URLs. These could be a homepage (find their blog), a blog index (crawl for articles), or direct article URLs (evaluate directly). **Run Step 0 first** (Ahrefs DR/quality/topical pre-screen), then proceed to Step 2.5 directly using the candidate URLs Ahrefs returned. Only fall back to Step 2 (sitemap crawl) if Ahrefs has no data on the domain.
 
-**Mode B — Google Doc drafts.** The partner has sent Stefan unpublished article drafts in Google Docs (often titled `[For Link Partners] ...`). Each doc IS the partner article — there is no site to crawl. Skip Step 2 entirely and go straight to Step 3 (matching). Use `mcp__c1fc4002-...__google_drive_fetch` to read each doc by ID. **Be careful with doc-ID-to-title mapping when fetching multiple docs in one batch** — when reporting back, double-check that each placement is attributed to the correct doc URL. Mixing them up has happened before and destroys credibility with the partner.
+**Mode B — Google Doc drafts.** The partner has sent Stefan unpublished article drafts in Google Docs (often titled `[For Link Partners] ...`). Each doc IS the partner article — there is no site to crawl. Skip Step 2 (sitemap crawl) and proceed to Step 3 (matching) — but Step 0.0 (existing backlink check) still applies and must run first. Use `mcp__c1fc4002-...__google_drive_fetch` to read each doc by ID. **Be careful with doc-ID-to-title mapping when fetching multiple docs in one batch** — when reporting back, double-check that each placement is attributed to the correct doc URL. Mixing them up has happened before and destroys credibility with the partner.
 
 **Before proceeding (both modes):** Check the partner site/domain against the Partner Site Restrictions above. If the partner falls into a restricted category, stop immediately and tell Stefan: "This site falls under [category] — not eligible per our guidelines."
 
@@ -533,6 +533,7 @@ Don't confuse "discovered via Phase 1 scan" with "Phase 1 placement." A scan tha
 - **Subdomain vs. domain mode confusion**: Always use `mode: subdomains` for discovery. `mode: domain` excludes `blog.partner.com` and `www.partner.com` and produces inconsistent data across calls.
 - **Country filter bias**: Default to no `country` parameter (worldwide). Defaulting to `us` undervalues UK/EU/APAC partners. Only narrow the country when the partner is explicitly geo-targeted.
 - **Site has no sitemap (Step 2 fallback)**: Fall back to Chrome blog index crawling → then WebSearch as last resort. See "Fallback" section in Step 2.
+- **Mode B with existing backlink on the partner's root domain**: Apply the same logic as Mode A — stop processing, report the existing link's URL and first-seen date to the user, and let them decide whether the new editorial placement is different enough to justify a second link.
 - **Mode B (Google Docs) — doc-to-title mapping mix-up**: When fetching multiple docs in one batch, the response order may not match the request order. Always re-verify each placement against the actual doc title before sending it to Stefan. If unsure, re-fetch the single doc to confirm.
 - **Mode B — large doc fetches truncate**: Google Docs over a certain size return truncated content. If the article body looks cut off, re-fetch with a narrower range or ask Stefan to share the doc as plain text.
 - **`references/content-inventory.md` or `references/anchors.md` missing**: The skill folder should contain both reference files. If they're missing, surface this to Stefan immediately — without them, target picking and anchor matching are guesswork. Don't try to substitute with `product-marketing-team:site-intelligence` (wrong scope — marketing pages only).
@@ -562,3 +563,4 @@ Don't confuse "discovered via Phase 1 scan" with "Phase 1 placement." A scan tha
 - Don't skip Step 0 (Ahrefs pre-screen) on Mode A sites just because the partner "looks legit." DR + traffic + topical fit must be checked before crawling
 - Don't trust DR alone as a quality signal — DR 70+ with no traffic and no topical fit is a PBN, not a publisher
 - Don't use `sum_traffic_merged` as an Ahrefs `order_by` value — it's select-only and the call will fail. Use `sum_traffic`
+- Don't skip the existing-backlink check (Step 0.0) on Mode B just because there's no live site to crawl — the domain is still known and the check is cheap
