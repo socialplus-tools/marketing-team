@@ -52,43 +52,6 @@ Surface borderline cases to Stefan with the metrics — never auto-decline based
 - The target page should not compete with the partner article's keywords.
 - **Do NOT use the `product-marketing-team:site-intelligence` skill to pick targets.** That skill only catalogs the ~37 marketing pages on social.plus — which are exactly the off-limits set above. It is useful for *avoiding* marketing pages, never for *picking* link targets. Pull targets from `references/content-inventory.md` (the blog + glossary inventory) or from the live blog/glossary sitemaps instead.
 
-### Excluded social.plus Articles
-
-These articles are NOT available for link exchanges — never use them as target URLs:
-- `social.plus/blog/40-statistics-you-should-know-about-online-communities`
-- `social.plus/blog/online-communities-vs-social-networks-whats-the-difference`
-- `social.plus/blog/mobile-app-user-acquisition-statistics`
-- `social.plus/blog/on-demand-service-apps-7-features-you-need`
-- `social.plus/blog/the-magic-of-sephoras-community-led-path-to-success`
-- `social.plus/blog/figmas-community-driven-path-to-success`
-- `social.plus/blog/why-customer-engagement-is-key-to-brand-loyalty`
-- `social.plus/blog/lululemons-community-led-growth-strategy`
-- `social.plus/blog/how-to-create-a-social-media-app-the-101-guide`
-- `social.plus/blog/5-must-have-social-features-for-your-app`
-- `social.plus/blog/seo-vs-aso-whats-the-difference-for-app-success`
-- `social.plus/blog/how-to-monetize-your-app`
-- `social.plus/blog/app-engagement-benchmarks`
-- `social.plus/blog/first-party-data-and-personalization`
-- `social.plus/blog/how-to-measure-brand-loyalty-our-top-insights`
-- `social.plus/blog/mobile-app-usage-statistics-to-grow-your-user-engagement`
-- `social.plus/blog/app-re-engagement-strategies`
-- `social.plus/blog/why-social-features-are-crucial-for-in-app-user-engagement`
-- `social.plus/blog/ai-analytics-transforming-business-decisions`
-- `social.plus/blog/ai-analytics-marketing-strategy`
-- `social.plus/blog/mobile-app-user-acquisition-strategies`
-- `social.plus/blog/how-ai-insights-improve-decision-making-for-brands`
-- `social.plus/blog/first-party-data-in-enhancing-user-experience`
-
-### Existing Anchor Text Only (no text edits accepted)
-
-These social.plus articles can only be used as targets for Phase 1 (existing anchor matches). Do NOT propose Phase 2 text modifications that link to these:
-- `social.plus/blog/beyond-social-rethinking-your-strategy-on-rented-land`
-- `social.plus/blog/beyond-social-whats-the-difference-between-followers-and-actual-community`
-- `social.plus/blog/beyond-social-why-brands-need-portable-owned-audiences-to-stay-connected`
-- `social.plus/blog/community-story-shein`
-- `social.plus/blog/community-story-whispers-rolls-royce`
-- `social.plus/blog/community-story-ltk`
-
 ## Step-by-Step Process
 
 ### 0.0. Existing Backlink Check (ALL MODES)
@@ -334,7 +297,7 @@ For each partner article opened in Step 2.5:
 
 3. **Extract the exact sentence** — For every match, capture the verbatim original sentence from the partner's article. Without a verified original sentence, the placement is incomplete and can't be used.
 
-4. **Match to the best social.plus page** — For each anchor found, determine which social.plus URL is the most relevant target. **Always check the anchor against the Excluded Articles and Existing Anchor Text Only lists before assigning a target URL.**
+4. **Match to the best social.plus page** — For each anchor found, determine which social.plus URL is the most relevant target.
    - For definitional/generic anchors → prefer glossary pages (e.g., "user engagement" → `social.plus/glossary/user-engagement`)
    - For strategic/how-to anchors → prefer blog posts (e.g., "app engagement strategies" → `social.plus/blog/app-engagement-strategies`)
    - For SDK/API anchors → prefer technical blog posts or glossary entries
@@ -556,8 +519,6 @@ Don't confuse "discovered via Phase 1 scan" with "Phase 1 placement." A scan tha
 - Don't write Phase 2 suggested text that sounds like an ad or is obviously shoehorned in — it must read naturally in context
 - Don't start suggested text with "Additionally," "Furthermore," "Moreover," "In addition," or other AI-sounding transitions
 - Don't place links in introductions or conclusions — body paragraphs only
-- Don't use excluded social.plus articles as target URLs (see Excluded Articles list above)
-- Don't propose Phase 2 text modifications linking to "Existing Anchor Text Only" articles
 - Don't link to social.plus homepage, product pages, landing pages, or service pages — blogs, articles, and glossary only
 - Don't process partner sites in restricted categories (crypto, casino, converter tools, etc.) — flag them and stop
 - Don't skip Step 0 (Ahrefs pre-screen) on Mode A sites just because the partner "looks legit." DR + traffic + topical fit must be checked before crawling
