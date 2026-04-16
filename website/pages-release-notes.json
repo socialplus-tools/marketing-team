@@ -1,0 +1,196 @@
+{
+  "_meta": {
+    "generatedAt": "2026-04-16T17:07:11.238Z",
+    "itemCount": 31,
+    "collectionId": "697713f21a4cfd3f4db2768b",
+    "method": "webflow-data-api"
+  },
+  "pages": [
+    {
+      "url": "https://www.social.plus/release-note/auto-generated-live-stream-thumbnail",
+      "metaTitle": "Auto-Generated Live Stream Thumbnail",
+      "metaDescription": "When a live stream ends without a set thumbnail, one is automatically generated from the stream and applied to the replay post",
+      "content": "# Auto-Generated Live Stream Thumbnail"
+    },
+    {
+      "url": "https://www.social.plus/release-note/post-views-and-impressions-csv-export-via-api",
+      "metaTitle": "Post Views and Impressions CSV Export via API",
+      "metaDescription": "Admins can now generate and download a CSV report of post views and impressions via API",
+      "content": "# Post Views and Impressions CSV Export via API"
+    },
+    {
+      "url": "https://www.social.plus/release-note/ai-moderation-and-admin-reset-for-user-profiles",
+      "metaTitle": "AI Moderation and Admin Reset for User Profiles",
+      "metaDescription": "AI moderation now automatically flags inappropriate profile photos, display names, and descriptions",
+      "content": "# AI Moderation and Admin Reset for User Profiles"
+    },
+    {
+      "url": "https://www.social.plus/release-note/multi-level-comment-replies-in-posts-and-feeds",
+      "metaTitle": "Multi-Level Comment Replies in Posts and Feeds",
+      "metaDescription": "Posts and activity feeds now support two levels of nested comment replies, making it easier to follow and join conversations.",
+      "content": "# Multi-Level Comment Replies in Posts and Feeds"
+    },
+    {
+      "url": "https://www.social.plus/release-note/upgraded-live-stream-room-management",
+      "metaTitle": "Upgraded Live Stream Room Management",
+      "metaDescription": "Admins can now create, manage, and monitor live streams directly from the Console.",
+      "content": "# Upgraded Live Stream Room Management"
+    },
+    {
+      "url": "https://www.social.plus/release-note/product-tagging-and-pinning-in-live-streams",
+      "metaTitle": "Product Tagging and Pinning in Live Streams",
+      "metaDescription": "Admins and creators can now tag up to 20 products and pin them as overlays during live streams. ",
+      "content": "# Product Tagging and Pinning in Live Streams"
+    },
+    {
+      "url": "https://www.social.plus/release-note/product-tagging-in-post-mix-media",
+      "metaTitle": "Product Tagging in Post (Mix Media)",
+      "metaDescription": "Admins and creators can now tag products across any post type, text, image, or video.",
+      "content": "# Product Tagging in Post (Mix Media)"
+    },
+    {
+      "url": "https://www.social.plus/release-note/product-catalogue-on-console",
+      "metaTitle": "Product Catalogue on Console",
+      "metaDescription": "Admins can now upload and manage a product catalogue in bulk via CSV or manually.",
+      "content": "# Product Catalogue on Console"
+    },
+    {
+      "url": "https://www.social.plus/release-note/non-paginated-blocked-users-list",
+      "metaTitle": "Non-Paginated Blocked Users List",
+      "metaDescription": "Retrieve a complete list of blocked users in one response without pagination, so your app can cache locally and perform real-time UI checks efficiently.",
+      "content": "# Non-Paginated Blocked Users List"
+    },
+    {
+      "url": "https://www.social.plus/release-note/time-based-post-feed-filtering",
+      "metaTitle": "Time-Based Post Feed Filtering",
+      "metaDescription": "Query posts created after a specific date or timestamp, so your feed only surfaces content within a relevant time window. This keeps load times fast and data usage low for end users.",
+      "content": "# Time-Based Post Feed Filtering"
+    },
+    {
+      "url": "https://www.social.plus/release-note/exclude-roles-in-community-member-query",
+      "metaTitle": "Exclude Roles in Community Member Query",
+      "metaDescription": "Query your community member list and exclude specific admin roles to get accurate member counts and more efficient data fetching, so your results reflect only the users that matter.",
+      "content": "# Exclude Roles in Community Member Query"
+    },
+    {
+      "url": "https://www.social.plus/release-note/create-and-manage-user-tags-from-the-console",
+      "metaTitle": "Create and Manage User Tags from the Console",
+      "metaDescription": "Admins can now create, assign, and manage custom tags to community members directly from the Console. ",
+      "content": "# Create and Manage User Tags from the Console"
+    },
+    {
+      "url": "https://www.social.plus/release-note/event-creation-and-management-on-console",
+      "metaTitle": "Event Creation and Management on Console",
+      "metaDescription": "Admins and moderators can now create and manage digital live streams, virtual events, and in-person gatherings directly from the Console.",
+      "content": "# Event Creation and Management on Console"
+    },
+    {
+      "url": "https://www.social.plus/release-note/intelligent-search-with-semantic-understanding-and-content-filtering",
+      "metaTitle": "Intelligent Search with Semantic Understanding and Content Filtering",
+      "metaDescription": "Our new search API moves beyond exact keyword matching to understand user intent and improve content discovery across the platform.",
+      "content": "# Intelligent Search with Semantic Understanding and Content Filtering"
+    },
+    {
+      "url": "https://www.social.plus/release-note/dynamic-ui-a-new-chapter-in-ui-development",
+      "metaTitle": "Dynamic UI: A New Chapter in UI Development",
+      "metaDescription": "Built on the new UI Kit 4 technology, Dynamic UI offers a faster and more modular way to build seamless community interfaces. ",
+      "content": "# Dynamic UI: A New Chapter in UI Development"
+    },
+    {
+      "url": "https://www.social.plus/release-note/provide-specific-context-with-content-report-reasons",
+      "metaTitle": "Provide Specific Context with Content Report Reasons",
+      "metaDescription": "Community members can now provide specific context when reporting inappropriate content by selecting from predefined reasons like harassment or spam. ",
+      "content": "# Provide Specific Context with Content Report Reasons"
+    },
+    {
+      "url": "https://www.social.plus/release-note/centralize-all-reports-with-the-moderation-feed",
+      "metaTitle": "Centralize All Reports with the Moderation Feed",
+      "metaDescription": "The new Moderation Feed brings every flagged post, comment, and message into one unified view.",
+      "content": "# Centralize All Reports with the Moderation Feed"
+    },
+    {
+      "url": "https://www.social.plus/release-note/swipeable-vertical-video-with-clips",
+      "metaTitle": "Swipeable Vertical Video with Clips",
+      "metaDescription": "Clips brings a familiar, high-engagement vertical video feed directly into your app.",
+      "content": "# Swipeable Vertical Video with Clips"
+    },
+    {
+      "url": "https://www.social.plus/release-note/granular-admin-access-controls",
+      "metaTitle": "Granular Admin Access Controls",
+      "metaDescription": "Admins can now be assigned custom roles and permissions within the Console to enhance security and streamline workflows.",
+      "content": "# Granular Admin Access Controls"
+    },
+    {
+      "url": "https://www.social.plus/release-note/interactive-polls-with-image-support-and-flexible-voting",
+      "metaTitle": "Interactive Polls with Image Support and Flexible Voting",
+      "metaDescription": "We have enhanced our poll functionality to make them more engaging and user-friendly across all platforms.",
+      "content": "# Interactive Polls with Image Support and Flexible Voting"
+    },
+    {
+      "url": "https://www.social.plus/release-note/inactive-user-management-and-bulk-deletion",
+      "metaTitle": "Inactive User Management and Bulk Deletion",
+      "metaDescription": "Admins can now download a complete user list directly from the Console, including the last activity date for every account.",
+      "content": "# Inactive User Management and Bulk Deletion"
+    },
+    {
+      "url": "https://www.social.plus/release-note/multi-stream-livestream-posts-for-device-specific-views-in-console",
+      "metaTitle": "Multi-Stream Livestream Posts for Device-Specific Views in Console ",
+      "metaDescription": "Admins can now create and manage multi-stream posts directly from the Console to provide a device-optimized viewing experience. ",
+      "content": "# Multi-Stream Livestream Posts for Device-Specific Views in Console "
+    },
+    {
+      "url": "https://www.social.plus/release-note/new-chat-features-for-flutter-ui-kit",
+      "metaTitle": "New Chat Features for Flutter UI Kit",
+      "metaDescription": "The Flutter Chat UI Kit now supports message and thread search, allowing users to quickly locate information within their conversations. ",
+      "content": "# New Chat Features for Flutter UI Kit"
+    },
+    {
+      "url": "https://www.social.plus/release-note/track-content-quality-and-contribution-level-across-your-community",
+      "metaTitle": "Track Content Quality and Contribution Level Across Your Community",
+      "metaDescription": "New user insights are now available in the Console to help admins identify top contributors and understand member impact.",
+      "content": "# Track Content Quality and Contribution Level Across Your Community"
+    },
+    {
+      "url": "https://www.social.plus/release-note/visitor-mode-for-public-browsing-and-analytics",
+      "metaTitle": "Visitor Mode for Public Browsing and Analytics",
+      "metaDescription": "Visitor Mode allows anonymous users to browse and discover community content without signing in. ",
+      "content": "# Visitor Mode for Public Browsing and Analytics"
+    },
+    {
+      "url": "https://www.social.plus/release-note/multimedia-posts-in-a-single-post",
+      "metaTitle": "Multimedia Posts in a Single Post",
+      "metaDescription": "Create a single post that combines photos, videos, and file attachments like PDFs enabling richer storytelling and cleaner feeds without splitting content across multiple posts.",
+      "content": "# Multimedia Posts in a Single Post"
+    },
+    {
+      "url": "https://www.social.plus/release-note/in-stream-engagement-and-moderation",
+      "metaTitle": "In-Stream Engagement and Moderation",
+      "metaDescription": "New features have been added to the live experience to improve both the creator's control and the viewer's experience.",
+      "content": "# In-Stream Engagement and Moderation"
+    },
+    {
+      "url": "https://www.social.plus/release-note/live-streaming-and-event-support-scheduling-co-streaming-and-real-time-engagement",
+      "metaTitle": "Live Streaming and Event Support: Scheduling, Co-streaming, and Real-Time Engagement",
+      "metaDescription": "We have expanded our video infrastructure to support the full lifecycle of live content, from initial scheduling to real-time broadcast management.",
+      "content": "# Live Streaming and Event Support: Scheduling, Co-streaming, and Real-Time Engagement"
+    },
+    {
+      "url": "https://www.social.plus/release-note/network-level-live-stream-notification-control",
+      "metaTitle": "Network-Level Live Stream Notification Control",
+      "metaDescription": "Take control of your broadcast environment with a network-level safety switch for livestream push notifications. ",
+      "content": "# Network-Level Live Stream Notification Control"
+    },
+    {
+      "url": "https://www.social.plus/release-note/content-performance-widgets-and-reports-on-dashboard",
+      "metaTitle": "Content Performance Widgets and Reports on Dashboard",
+      "metaDescription": "Drill into individual post performance with content performance widgets that track impressions, reach, and engagement trends over time. ",
+      "content": "# Content Performance Widgets and Reports on Dashboard"
+    },
+    {
+      "url": "https://www.social.plus/release-note/live-stream-analytics-with-real-time-insights",
+      "metaTitle": "Live Stream Analytics with Real-Time Insights",
+      "metaDescription": "See how your live streams perform with real-time metrics on viewers, engagement, watch time, and audience retention patterns.",
+      "content": "# Live Stream Analytics with Real-Time Insights"
+    }
+  ]
+}
