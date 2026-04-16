@@ -39,7 +39,7 @@ Each skill fetches its reference files live from GitHub every time it triggers. 
 - [`design-system/`](../design-system) — Full visual design system (colors, typography, spacing, buttons, shadows, layout, accessibility, and more)
 - [`assets/`](../assets) — Official logo SVGs
 - [`emails/`](../emails) — Email template reference, strategy guide, and HTML examples
-- [`website/`](../website) — Live website content JSON (auto-updated by Cloudflare Worker on every Webflow publish)
+- [`website/`](../website) — Live website content JSON files (9 inventories: marketing, use cases, blog, glossary, answers, customer stories, release notes, product updates, webinars) auto-updated by a Cloudflare Worker on every Webflow publish
 
 ## Installation
 

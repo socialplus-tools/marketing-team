@@ -7,7 +7,7 @@ description: "Write AEO (Answer Engine Optimization) articles for the social.plu
 
 AEO (Answer Engine Optimization) articles are structured reference content published at `social.plus/answers/[slug]`. They exist so AI search engines can index and cite them. They are not blog posts — they are clear definitions, organized tables, practical steps, and direct answers.
 
-## Before you write: ask what to cover
+## Before you write: ask what to cover AND check for duplicates
 
 Before fetching brand files or writing anything, ask the user what the article should be about. Use the AskUserQuestion tool. You need enough context to write a focused, comprehensive reference article. Good things to learn:
 
@@ -18,6 +18,19 @@ Before fetching brand files or writing anything, ask the user what the article s
 - Whether it relates to or should reference other existing content
 
 If the user gives a clear, detailed brief, move on. If the brief is vague (e.g., "write something about feeds"), ask follow-up questions to narrow the scope. A vague brief produces a vague article.
+
+### Duplicate-topic check (mandatory)
+
+Once you have a clear topic, fetch the existing /answers/ inventory and verify you are not about to duplicate an existing article:
+```
+https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-answers.json
+```
+
+Scan each item's `metaTitle` and `content` (heading hierarchy) for topic overlap. If a close match exists:
+- Tell the user the existing article URL and ask whether they want to update it instead of writing a new one.
+- If they want a new article, ask how the angle should differ from the existing one (different audience, deeper technical depth, newer data, etc.) and verify the difference is substantial enough to justify a separate page.
+
+Duplicate /answers/ pages compete for the same AI citation slot and split authority — always prefer updating an existing article over creating a near-duplicate.
 
 ## Brand messaging: fetch before writing
 
