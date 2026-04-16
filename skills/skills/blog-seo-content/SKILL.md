@@ -40,7 +40,7 @@ https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 
 5. If the article needs awareness of what the website already says (to avoid contradicting it or to link to relevant pages), also fetch:
 ```
-https://github.com/cruciate-hub/marketing-team/blob/main/website/marketing-pages.json
+https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-marketing.json
 ```
 
 ## Webflow CMS field mapping

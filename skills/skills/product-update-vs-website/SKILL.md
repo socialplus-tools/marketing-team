@@ -1,6 +1,6 @@
 ---
 name: product-update-vs-website
-description: Compare new product releases or monthly updates against the current social.plus website content to identify gaps — pages that should mention a new feature but don't yet. Use this skill when someone pastes a release note, monthly product update, or changelog entry and wants to know which website pages need updating. Also trigger when someone asks "what's missing from the site", "does the website reflect this update", "which pages need to change", or references the marketing-pages.json file. Always use this skill for any product-update-to-website comparison task, even if the user doesn't explicitly name the skill.
+description: Compare new product releases or monthly updates against the current social.plus website content to identify gaps — pages that should mention a new feature but don't yet. Use this skill when someone pastes a release note, monthly product update, or changelog entry and wants to know which website pages need updating. Also trigger when someone asks "what's missing from the site", "does the website reflect this update", "which pages need to change", or references the pages-marketing.json file. Always use this skill for any product-update-to-website comparison task, even if the user doesn't explicitly name the skill.
 ---
 
 # Product Update vs Website
@@ -13,7 +13,10 @@ Compares social.plus product updates (release notes, monthly updates) against th
 ```
 https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 ```
-2. **Load current site content** from `website/marketing-pages.json` in this repo (or fetch the raw file from GitHub)
+2. **Load current site content** from TWO JSON files in this repo (fetch both — they cover different page types):
+   - `website/pages-marketing.json` — static marketing pages (homepage, pricing, product, industry, feature/SDK/UIKit pages)
+   - `website/pages-use-cases.json` — all `/use-case/*` pages (activity feed, group chat, livestream, polls, etc.)
+   Combine the `pages` arrays from both files before running gap detection — they are one logical dataset split into two files for maintenance reasons.
 3. **Take the product update** — a release note, monthly product update, or changelog entry provided by the user
 4. **Cross-reference** every new feature/capability mentioned in the update against every page in the JSON
 5. **Output a gap report** showing which pages should mention this feature but currently don't
@@ -21,18 +24,19 @@ https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 
 ## Site content reference
 
-The site content JSON is maintained automatically by a Cloudflare Worker that regenerates it on every Webflow site publish. It lives at:
+The site content JSONs are maintained automatically by a Cloudflare Worker that regenerates them on every Webflow site publish (`pages-marketing.json`) and every use-case CMS publish (`pages-use-cases.json`).
 
-**Repo path:** `website/marketing-pages.json`
-**GitHub URL:** `https://github.com/cruciate-hub/marketing-team/blob/main/website/marketing-pages.json`
+**Files to fetch (both):**
+- `website/pages-marketing.json` → https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-marketing.json
+- `website/pages-use-cases.json` → https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-use-cases.json
 
-The JSON structure:
+Both files share the same JSON structure:
 ```json
 {
-  "_meta": { "generatedAt": "...", "pageCount": 37 },
+  "_meta": { "generatedAt": "...", "itemCount": 27 },
   "pages": [
     {
-      "url": "/social/features",
+      "url": "https://www.social.plus/social/features",
       "metaTitle": "...",
       "metaDescription": "...",
       "content": "# heading\n## section\n### feature name\nFeature description..."
@@ -41,7 +45,7 @@ The JSON structure:
 }
 ```
 
-Each page's `content` field preserves heading hierarchy using markdown-style markers (`#`, `##`, `###`).
+URLs are fully qualified (`https://www.social.plus/...`) — use them as-is in report output. Each page's `content` field preserves heading hierarchy using markdown-style markers (`#`, `##`, `###`).
 
 ## Pages covered
 
@@ -61,8 +65,9 @@ Each page's `content` field preserves heading hierarchy using markdown-style mar
 - `/social/sdk`, `/chat/sdk`, `/video/sdk` — SDK pages
 - `/social/uikit`, `/chat/uikit` — UIKit pages
 
-### Use case pages
+### Use case pages (loaded from `pages-use-cases.json`)
 - `/use-case/1-1-chat`, `/use-case/activity-feed`, `/use-case/custom-posts`, `/use-case/group-chat`, `/use-case/groups`, `/use-case/live-chat`, `/use-case/livestream`, `/use-case/polls`, `/use-case/stories-and-clips`, `/use-case/user-profiles`
+- New use cases are auto-included when published — the JSON reflects whatever currently exists in the Webflow Use Cases CMS collection.
 
 ### Industry pages
 - `/industry/retail`, `/industry/fitness`, `/industry/travel`, `/industry/sports`, `/industry/health-and-wellness`, `/industry/fintech`, `/industry/media-and-news`, `/industry/edtech`, `/industry/gaming`, `/industry/betting`
@@ -174,7 +179,7 @@ Files loaded:
 
 ## Instructions for Claude
 
-1. Always load the marketing-pages.json first. If running in an environment with file access (Cowork, Claude Desktop), read it from the local repo. Otherwise, fetch from the raw GitHub URL.
+1. Always load BOTH `pages-marketing.json` and `pages-use-cases.json` first. Merge their `pages` arrays into one combined dataset before gap detection. If running in an environment with file access (Cowork, Claude Desktop), read from the local repo. Otherwise, fetch from the raw GitHub URLs.
 2. **Load the brand messaging guidelines** by fetching the router file first, then the files it specifies:
    ```
    https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
