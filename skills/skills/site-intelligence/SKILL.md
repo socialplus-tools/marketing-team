@@ -30,7 +30,7 @@ https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 
 Fetch the site content JSON using WebFetch:
 ```
-https://github.com/cruciate-hub/marketing-team/blob/main/website/marketing-pages.json
+https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-marketing.json
 ```
 
 The JSON structure:
