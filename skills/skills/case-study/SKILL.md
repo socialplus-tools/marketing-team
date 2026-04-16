@@ -38,6 +38,16 @@ https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 4. Also follow **"Short-form content"** routing for:
    - `boilerplates.md` (company descriptions for reference)
 
+5. Fetch the existing customer stories inventory for narrative-consistency and cross-referencing:
+```
+https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-customer-stories.json
+```
+
+Use this to:
+- **Avoid contradictions** — check how similar customers are already described on the site (e.g., if writing a fitness industry customer, scan existing fitness stories for metrics/framing consistency).
+- **Cross-link opportunities** — suggest 1-2 relevant existing customer stories the new story could reference in its body copy.
+- **Avoid duplicates** — if the user is writing about a customer already in the collection, tell them so and ask whether they intend an update to the existing story instead of a new one.
+
 ## Step 1: Gather missing information before drafting
 
 **Before writing anything**, review what the user has provided and ask for any missing information. Do NOT start drafting the customer story until you have enough data to avoid placeholders. Present one clear list of questions — not multiple rounds.
