@@ -43,21 +43,8 @@ Every blog post is a CMS item in `📖 Blog Posts`. The skill produces each fiel
 - **Post Content** (`post-content`, RichText HTML — `<h2>`/`<h3>` every 200–300 words, `<strong>` sparingly, `<a target="_blank">` on links, `<figure>`/`<img>` for inline images with `[IMAGE_URL]` placeholders)
 
 ### Taxonomy
-- **Main Category Tag** (single primary category — Community, App Growth, Insights, Engagement, Retention, Acquisition, News, Social+, Vertical Social Networks, Community Stories, Monetization, Education, Hospitality, Events, People)
+- **Main Category Tag** (single primary category — Community, App Growth, Insights, Engagement, Retention, Acquisition, News, Product, Social+, Vertical Social Networks, Community Stories, Monetization, Education, Hospitality, Events, People)
 - **Tags** (main category + 1–2 secondary)
-
-### Author
-Recommend based on topic:
-
-| Author | Role | Best for |
-|---|---|---|
-| Napassorn Esharoe | Product Marketing Manager | Product-focused content, feature articles |
-| Amadeus Noren | VP of Marketing | Strategic content, market analysis |
-| Francesca Gargaglia | CEO | Vision pieces, company direction |
-| Ivana Istochka | VP Community & Demand Generation | Community strategy, demand gen |
-| social.plus Team | Generic byline | News, trend pieces, general content |
-
-Default to "social.plus Team" when no author fits.
 
 ### Reading time
 **Minutes to read** — calculated at ~250 words/minute, rounded.
@@ -102,7 +89,6 @@ A clearly labeled field-by-field mapping. Example:
 **Slug:** [value]
 **Main Category Tag:** [category]
 **Tags:** [list]
-**Author:** [author name]
 **Minutes to read:** [number]
 
 **Meta description:** [value — under 160 chars]

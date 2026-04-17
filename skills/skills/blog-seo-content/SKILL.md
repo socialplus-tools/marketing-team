@@ -122,6 +122,7 @@ Tell the user which single primary category to select. Choose from:
 | Retention | User retention, churn reduction, loyalty |
 | Acquisition | User acquisition specifically |
 | News | Company news, product announcements |
+| Product | Product-focused content, feature deep dives, product announcements |
 | Social+ | social.plus-specific content, product deep dives |
 | Vertical Social Networks | Industry-specific social network strategies |
 | Community Stories | Customer/community spotlight content |
@@ -133,21 +134,6 @@ Tell the user which single primary category to select. Choose from:
 
 **Tags** (`category-multi-reference-3`, MultiReference → Blog Categories)
 Tell the user which additional categories to tag. Always include the Main Category Tag plus 1-2 secondary tags. Example: Main = "Community", Tags = ["Community", "Engagement"].
-
-### Author
-
-**Author** (`author-reference`, Reference → Authors)
-Recommend an author based on the topic:
-
-| Author | Role | Best for |
-|---|---|---|
-| Napassorn Esharoe | Product Marketing Manager | Product-focused content, feature articles |
-| Amadeus Noren | VP of Marketing | Strategic content, market analysis |
-| Francesca Gargaglia | CEO | Vision pieces, company direction |
-| Ivana Istochka | VP Community & Demand Generation | Community strategy, demand gen |
-| social.plus Team | Generic byline | News, trend pieces, general content |
-
-If no author fits, default to "social.plus Team."
 
 ### Reading time
 
@@ -200,7 +186,6 @@ Present the output as a clearly labeled field-by-field mapping. The user copies 
 **Date Published:** [today's date or user-specified]
 **Main Category Tag:** [category name]
 **Tags:** [list of category names]
-**Author:** [author name]
 **Minutes to read:** [number]
 
 **Meta description:** [value — under 160 chars]
