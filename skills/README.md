@@ -2,7 +2,7 @@
 
 Shared plugin for the marketing team. Ensures all content Claude produces aligns with the latest brand messaging, design system, and website content.
 
-## Skills (12)
+## Skills (13)
 
 ### Content creation
 
@@ -24,10 +24,11 @@ Shared plugin for the marketing team. Ensures all content Claude produces aligns
 | [site-intelligence](./skills/site-intelligence/SKILL.md) | 308 | 17.0 KB | Queries, audits, and analyzes the 10 website inventory files — marketing pages, industry, use cases, blog, glossary, answers, customer stories, release notes, product updates, and webinars. |
 | [product-update-vs-website](./skills/product-update-vs-website/SKILL.md) | 190 | 11.0 KB | Compares product updates against website content to find gaps. |
 
-### Link building
+### SEO & linking
 
 | Skill | Lines | Size | What it does |
 |---|---:|---:|---|
+| [internal-linking-optimizer](./skills/internal-linking-optimizer/SKILL.md) | 429 | 24.0 KB | Suggests SEO-grounded internal links for new content (invoked by `blog-seo-content` and `aeo-content`) and runs site-wide internal link audits. Uses a canonical anchor map and cannibalization warnings from `link-strategy.md`, with live page-fetch to verify insertion points. |
 | [link-building-vetter](./skills/link-building-vetter/SKILL.md) | 111 | 4.6 KB | Vets incoming ABC link exchange requests, scores them 1-10, and drafts response emails. |
 | [backlink-placement-finder](./skills/backlink-placement-finder/SKILL.md) | 527 | 40.9 KB | Finds contextually relevant backlink placement opportunities on partner sites and drafts request emails. |
 

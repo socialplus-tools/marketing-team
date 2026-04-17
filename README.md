@@ -14,7 +14,7 @@ Shared plugin marketplace and brand reference for the marketing team. Skills fet
 
 When new skills are added to the plugin, click the **three dots** next to the marketplace name to refresh, then **Update** the plugin.
 
-## Available skills (11)
+## Available skills (13)
 
 ### Content creation
 
@@ -22,6 +22,7 @@ When new skills are added to the plugin, click the **three dots** next to the ma
 |---|---|
 | **brand-messaging** | Applies brand voice, terminology, tone, and messaging frameworks to any written content. |
 | **blog-seo-content** | SEO-optimized blog posts, thought leadership articles, and long-form content. |
+| **aeo-content** | AEO (Answer Engine Optimization) articles for the `/answers/` collection, structured for AI search engine citation. |
 | **social-media** | Platform-specific posts for LinkedIn, Instagram, and X with format and tone guidelines. |
 | **campaign-copy** | Ad copy, campaign landing pages, and paid media content (Google, LinkedIn, Meta). |
 | **newsletters** | Generates MailerLite-compatible HTML emails from monthly product update docs. |
@@ -35,10 +36,11 @@ When new skills are added to the plugin, click the **three dots** next to the ma
 | **site-intelligence** | Queries, audits, and analyzes the 10 website inventory files (marketing, industry, use cases, blog, glossary, answers, customer stories, release notes, product updates, webinars). |
 | **product-update-vs-website** | Compares product release notes against live website content to find pages that need updating. |
 
-### Link building
+### SEO & linking
 
 | Skill | What it does |
 |---|---|
+| **internal-linking-optimizer** | Suggests SEO-grounded internal links for new content (invoked by `blog-seo-content` and `aeo-content`) and runs site-wide link audits. Uses a canonical anchor map and cannibalization warnings from `link-strategy.md`, with live page-fetch to verify insertion points. |
 | **link-building-vetter** | Vets incoming ABC link exchange requests against social.plus guidelines, scores them 1-10, and drafts response emails. |
 | **backlink-placement-finder** | Finds contextually relevant backlink placement opportunities on partner websites and drafts request emails. |
 
@@ -52,7 +54,7 @@ When new skills are added to the plugin, click the **three dots** next to the ma
 | [`assets/`](./assets) | Official logo SVGs |
 | [`emails/`](./emails) | Email template reference, strategy guide, and HTML examples |
 | [`website/`](./website) | Live website content JSON (auto-updated on every Webflow publish via a Cloudflare Worker) |
-| [`skills/`](./skills) | The plugin source — contains the 9 skill definitions that fetch from the folders above |
+| [`skills/`](./skills) | The plugin source — contains the 13 skill definitions that fetch from the folders above |
 
 ## How updates work
 
