@@ -38,6 +38,7 @@ The `pages-*.json` files are intentionally a **lightweight heading index** — f
 **Live-fetch budget:**
 - Draft mode: at most **one WebFetch per shortlisted candidate**, capped at **8 candidates per draft** (so ≤8 live fetches per invocation). If the shortlist returns more than 8 strong candidates, take the top 8 by score.
 - Audit mode: live fetch is reserved for the **top 5-10 highest-impact gaps** in the implementation plan. The rest of the audit is JSON-only.
+- **If the calling context overrides the cap** (e.g., explicit "use only 4 fetches"), re-shortlist from scratch by score down to that lower N. Do not just slice the top N off an existing 8-item list — the candidate ranking should reflect the actual budget, since a tighter budget changes which candidates are worth verifying.
 
 **Why this works even when the JSON is sparse:** known limitations of the snapshot generator (e.g., the static-page extractor can't reach Webflow Components, so industry pages capture only the headings outside components) are compensated by the Phase 2 live fetch — the live page sees everything.
 
@@ -48,6 +49,8 @@ Fetch the main brain for cross-domain routing, precedence rules, and the complia
 ```
 https://github.com/cruciate-hub/marketing-team/blob/main/brain.md
 ```
+
+If the fetch fails, proceed with the link suggestions but append this notice at the end of your output: "⚠️ brain.md was unreachable — the compliance check (terminology, tone, claims, em-dashes, emojis) was not applied. The calling skill should run its own compliance pass before publishing." Linking decisions don't depend on brain.md, so a missing brain.md is a soft failure, not a stop condition.
 
 ## Step 1: Determine which data files to fetch
 
@@ -160,17 +163,20 @@ Return a clearly-labeled section the calling skill can embed in its own output. 
 ```
 ## Internal link suggestions
 
-**Mode:** Draft (target keyword: "[keyword]", cluster: [Brand/Chat/Social/Video/Industry/Cross], content type: [blog/AEO/generic])
+**Mode:** Draft (target keyword: "[keyword]", clusters: [primary cluster — list multiple if applicable, e.g., "Chat + Industry"], content type: [blog/AEO/generic])
 
 ### Cannibalization check
-[If any warnings fired:] ⚠️ This draft uses "[anchor term]" — see link-strategy.md cannibalization rule. [Brief recommendation.]
-[If clean:] ✅ No cannibalization risks detected.
+Use exactly one of these three states:
+- ⚠️ **Fired:** This draft uses "[anchor term]" in [definitional/commercial] intent. Per link-strategy.md, route to [target URL]. [Specific recommendation.]
+- ℹ️ **Informational (non-firing):** This draft uses "[anchor term]" which has a known cannibalization split. Confirming the article is on the [definitional/commercial] side — no action needed.
+- ✅ **Clean:** No cannibalization risks detected.
 
 ### Suggested links
 
-1. **Anchor:** "[anchor text]"
+1. **Anchor:** "[keyword-only anchor text — no surrounding articles like 'a' or 'the']"
    **Target:** [full URL]
-   **Insert at:** [section heading or quoted sentence from draft]
+   **Insert at:** "[exact verbatim quote of the draft sentence where the link goes]"
+   **Rephrase suggestion:** "[rewritten sentence with anchor inline — OMIT THIS FIELD ENTIRELY if the original sentence accommodates the anchor cleanly without rewording]"
    **Format:** `<a href="[URL]" target="_blank">[anchor text]</a>` OR `[[anchor text]]([URL])`
    **Reasoning:** [why this link, in 1 sentence — cite link-strategy.md row if a canonical match]
 
@@ -179,9 +185,13 @@ Return a clearly-labeled section the calling skill can embed in its own output. 
 [3-7 for blog, 1-3 for AEO]
 
 ### Notes for the writer
-- [Optional: any cluster-specific anchor variation guidance applied]
-- [Optional: any out-of-canonical-map link targets used (e.g., long-tail blog/glossary pages) and why]
-- [Optional: AEO-specific section restrictions surfaced]
+
+Include only the bullets that apply to the current draft; OMIT any that don't.
+
+- **Cluster anchor variation applied:** [describe any variants used to avoid same-anchor-twice]
+- **Out-of-canonical-map targets used:** [list with rationale — e.g., long-tail blog or glossary pages not in the canonical map]
+- **AEO section restrictions surfaced:** [include only when content type is AEO — note any suggestions dropped because they fell in disallowed sections like FAQs, conclusion, metrics table]
+- **Skipped suggestions:** [optional — note candidates you considered but cut, with one-line reason]
 ```
 
 The calling skill is responsible for embedding these into its final output. This skill does not edit the draft directly.
@@ -373,9 +383,13 @@ After the 7-step audit, always add a "While looking at this..." section with 2-3
 
 **Be specific about locations.** Don't say "link from the chat page". Say "in `https://www.social.plus/chat`, under the `## Real-time messaging` section, after the existing paragraph about typing indicators, anchor 'in-app chat' to..."
 
+**Anchor text is keyword-only.** The anchor must be the exact natural keyword phrase from `link-strategy.md`'s canonical map (e.g., "chat widget", "in-app chat"), not a surrounding-article variant ("a chat widget", "the in-app chat"). SEO weight flows to the linked phrase; articles dilute it. The "Insert at" field of a suggestion quotes the draft sentence verbatim; if the draft's natural phrasing prevents a clean keyword anchor, use the **Rephrase suggestion** field to propose a rewrite — don't compromise on the anchor.
+
 **Respect the canonical map strictly.** If `link-strategy.md` says anchor X → page Y, that's the rule. If you think it's wrong, surface that as a flag for the user to update `link-strategy.md` — don't silently override.
 
 **Definitional vs commercial intent matters.** A glossary anchor in product-pitch context is wrong. A product anchor in a definition paragraph is wrong. Match intent to target.
+
+**Customer-story anchors use the customer name.** When suggesting a `/customer-story/*` link, the anchor must be the customer name (e.g., "Bitazza", "Noom"), not a proof-point claim or industry framing. Customer stories are case-study citations — name-anchored is the convention readers expect.
 
 **Don't over-link.** Targets per content type:
 - Blog: 3-7
