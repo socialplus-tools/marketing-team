@@ -126,6 +126,28 @@ After saving, tell the user the article is ready for review in the artifact pane
 
 When the user asks for changes (e.g., "make the intro shorter", "swap the comparison table", "add a FAQ about pricing"), edit the existing .md file rather than rewriting from scratch. After editing, the artifact updates automatically. Re-run the compliance check on the modified sections before confirming the edit is done.
 
+## Internal links
+
+After writing the article and before the compliance check, invoke the `internal-linking-optimizer` skill in **draft mode**. Pass it:
+
+- The full article markdown (title + body)
+- The target keyword (this is the title, since AEO articles target the question the title asks)
+- Content type: AEO (so it returns markdown links and applies AEO link constraints)
+
+The optimizer fetches `link-strategy.md` plus `pages-marketing.json`, `pages-use-cases.json`, `pages-glossary.json`, and `pages-answers.json` (for related-answer links). It returns 1-3 link suggestions in markdown format `[anchor](URL)`.
+
+**AEO-specific constraints the optimizer applies:**
+
+- **Markdown links only** — never HTML. AEO articles are pure markdown.
+- **1-3 internal links per article max.** AEO articles are reference content, not blog posts. Too many links dilute the answer.
+- **Allowed sections:** definition paragraph, "why it matters", architecture/features sections, step-by-step implementation. **Disallowed sections:** FAQs, conclusion, metrics table — these stay link-free so AI engines cite them cleanly.
+- **Definitional vs commercial intent:** prefer glossary links (`/glossary/*`) for definitional sections; reserve product/use-case links for the social.plus pitch section.
+- **Related-answer links:** at most 1 AEO → AEO link, placed where the linked article meaningfully extends a concept (e.g., a generic API article linking to a more specific Chat API article).
+
+If the optimizer returns zero appropriate suggestions, that's fine — AEO articles don't need internal links to function as reference content. Don't force links.
+
+Resolve cannibalization warnings before final output. If the article's title is the canonical anchor for a competing-pages situation, address it explicitly in the definition paragraph (e.g., "X refers to two related concepts: ...").
+
 ## Compliance check
 
 Before delivering, run this check from the main `brain.md`:

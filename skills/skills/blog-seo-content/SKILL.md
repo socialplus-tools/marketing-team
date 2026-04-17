@@ -38,7 +38,7 @@ https://github.com/cruciate-hub/marketing-team/blob/main/messaging/brain.md
 
 4. `value-story.md` is already loaded via the long-form routing above. For comparison or competitive content, lean on its differentiation framework especially heavily.
 
-5. If the article needs awareness of what the website already says (to avoid contradicting it, to link to relevant marketing pages, or to cross-link to existing blog posts), fetch any of these as relevant:
+5. If the article needs awareness of what the website already says (to avoid contradicting it or to find adjacent content to reference), fetch any of these as relevant:
 ```
 https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-marketing.json
 https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-industry.json
@@ -46,12 +46,12 @@ https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-blog.json
 https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-glossary.json
 ```
 
-`pages-blog.json` is especially useful for:
-- **Avoiding duplicates** — check if a similar topic has been covered before; if yes, suggest updating the existing post rather than writing a new one
-- **Internal links** — suggest 3-5 contextually relevant blog posts to link to from the new article (strengthens SEO)
-- **Cross-topic references** — find adjacent content to reference (e.g., a "user retention" article linking to an existing "app engagement" post)
+These fetches serve **content awareness** (not linking — internal linking is handled by the `internal-linking-optimizer` skill in a dedicated step). Use them for:
+- **Avoiding duplicates** — check if a similar topic has been covered before; if yes, suggest updating the existing post rather than writing a new one.
+- **Cross-topic references** — find adjacent content to reference (e.g., a "user retention" article that mentions concepts from an existing "app engagement" post).
+- **Tone and terminology calibration** — see how similar topics have been written about previously.
 
-Each item in `pages-blog.json` has `url`, `metaTitle`, `metaDescription`, and `content` (heading hierarchy). Scan `metaTitle` and `content` for topic overlap.
+Each item has `url`, `metaTitle`, `metaDescription`, and `content` (heading hierarchy). Scan `metaTitle` and `content` for topic overlap.
 
 ## Webflow CMS field mapping
 
@@ -104,7 +104,7 @@ Follow the narrative structure from `narrative.md`: Context → Tension → Infr
 
 - Target length: 5,000–12,000 characters (matching the typical range on the live blog).
 - Include the target keyword in the H1 (page title), first paragraph of post-content, and at least one H2.
-- Suggest 3-5 internal links to relevant social.plus pages.
+- Internal links: do NOT improvise. Internal links are inserted by the `internal-linking-optimizer` skill in a dedicated step before delivery (see "Internal links" section below). Write the draft without internal links; the optimizer adds 3-7 SEO-grounded `<a href>` tags using the canonical anchor map and cannibalization warnings in `link-strategy.md`.
 - Never fabricate statistics, customer names, quotes, or performance claims.
 - Never use emojis in blog content.
 
@@ -215,6 +215,25 @@ Present the output as a clearly labeled field-by-field mapping. The user copies 
 - Never use emojis in blog content.
 - Never skip the taxonomy fields. Every post needs a category, tags, and author.
 - Never use `<sprscript-green>` tags — those are for customer stories only.
+
+## Internal links
+
+After writing the draft and before the compliance check, invoke the `internal-linking-optimizer` skill in **draft mode**. Pass it:
+
+- The full draft article (title + post-content HTML + post-summary)
+- The target keyword
+- The category (so it can map to the correct topic cluster)
+- Content type: blog (so it returns HTML `<a href>` tags, not markdown)
+
+The optimizer fetches `link-strategy.md` plus `pages-marketing.json`, `pages-use-cases.json`, `pages-industry.json`, `pages-glossary.json`, `pages-blog.json`, and `pages-customer-stories.json`. It returns 3-7 link suggestions (anchor + URL + insertion point + reasoning) plus any cannibalization warnings.
+
+Embed each suggestion into the `post-content` HTML as `<a href="..." target="_blank">anchor</a>` at the suggested insertion point.
+
+Resolve cannibalization warnings before final output:
+- If the optimizer flags a competing anchor → page mapping, follow its recommendation.
+- If the draft's primary keyword is itself flagged as cannibalized, surface this to the user before delivering — it may affect the publishing decision.
+
+Never improvise internal links — the optimizer is the source of truth. The 3-7 link target is a guideline, not a quota: if the optimizer returns 4 strong suggestions, use 4.
 
 ## Before delivering
 
