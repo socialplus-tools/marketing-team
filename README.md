@@ -12,8 +12,6 @@ Shared plugin marketplace and brand reference for the marketing team. Skills fet
 6. Enter `cruciate-hub/marketing-team` → click **Sync**
 7. Click the **+** to install
 
-When new skills are added to the plugin, click the **three dots** next to the marketplace name to refresh, then **Update** the plugin.
-
 ## Available skills (13)
 
 ### Content creation
