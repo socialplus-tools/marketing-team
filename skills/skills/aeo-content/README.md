@@ -2,6 +2,8 @@
 
 Claude skill for writing AEO (Answer Engine Optimization) articles for `social.plus/answers/[slug]`. Designed to be cited by ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews, and Copilot.
 
+**New to this skill?** Start with [USAGE.md](USAGE.md) — a step-by-step guide for colleagues using the skill. The rest of this file is maintainer-focused.
+
 ## What this skill does
 
 Two modes, chosen from the brief:
