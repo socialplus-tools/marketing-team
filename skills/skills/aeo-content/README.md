@@ -1,94 +1,183 @@
-# AEO Content
+# AEO Content (v2)
 
-Claude skill for writing AEO (Answer Engine Optimization) articles for the `social.plus/answers/[slug]` collection.
+Claude skill for writing AEO (Answer Engine Optimization) articles for `social.plus/answers/[slug]`. Designed to be cited by ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews, and Copilot.
 
-These are structured reference articles designed to be indexed and cited by AI search engines (ChatGPT, Claude, Perplexity, Gemini, Google AI Overview, Copilot). They are not blog posts — they are clear definitions, organized tables, practical steps, and direct answers.
+## What this skill does
 
-## What it does
+Two modes, chosen from the brief:
 
-- Asks what the article should cover, then checks `website/pages-answers.json` for duplicate topics before writing.
-- Fetches the full brand messaging stack (terminology, tone, narrative, value-story, positioning, boilerplates) every time — no memorized content.
-- Produces a 1,200–1,500 word article following the fixed 11-section template (definition → tables → implementation steps → FAQs → conclusion).
-- Runs a terminology/tone/claims/em-dash/emoji/meta-length/word-count/HTML compliance pass before delivering.
-- Saves the article as a `.md` artifact in the outputs directory, ready for paste into Word or Google Docs.
+### Single article
+1. Asks for topic + intent (definition / procedural / comparative).
+2. Checks `pages-answers.json` for duplicates.
+3. Fetches the brand-messaging stack from GitHub.
+4. Surfaces real PAA + Reddit FAQ questions before writing.
+5. Drafts the article with an answer-first block, self-contained chunks, and intent-appropriate citation density.
+6. Delegates internal linking to `internal-linking-optimizer`.
+7. Runs the deterministic compliance script.
+8. Converts the markdown intermediate to `.docx` via `anthropic-skills:docx`.
 
-## When it triggers
+### Batch (multiple articles, themed, or "ideas")
+Four phases, each producing a markdown artifact for chat-based approval:
 
-When the user asks for an AEO article, an answer article, AI-optimized content, content for the `/answers/` collection, or any reference-style article meant for AI citation. Trigger phrases include "write an answer page", "create AEO content", "answer engine article", or mentions of optimizing content for AI search.
+- **Phase A — Ideas.** Skill produces `outputs/ideas.md` (8-15 candidates with title, intent, rationale, target keyword, fit). Colleague approves a subset via chat.
+- **Phase B — Questions.** For each approved idea, skill runs PAA + Reddit research and writes `outputs/questions.md` (8-10 questions per article). Colleague approves per-article.
+- **Phase C — Drafts.** Skill drafts each approved article into `outputs/[slug].draft.md` and writes `outputs/overview.md` as a batch-wide status table. Colleague chats edits; skill updates individual drafts and re-runs compliance.
+- **Phase D — Delivery.** When all drafts pass compliance, skill converts each to `.docx` via `anthropic-skills:docx`, bundles them into `outputs/aeo-batch-YYYY-MM-DD.zip` via `scripts/make_zip.py`, and sends a final chat summary with file list + FAQ source URLs.
 
-The skill is not for regular blog posts (use `blog-seo-content`), customer stories (use `case-study`), or social media posts (use `social-media`).
+Full phase specs with artifact schemas: `references/workflow-phases.md`. Samples of Phase A and B artifacts: `examples/ideas-sample.md`, `examples/questions-sample.md`.
 
-## Workflow
+## Approval syntax (batch mode)
 
-1. **Intake** — Use `AskUserQuestion` to capture the topic, angle, audience, target keywords, and any related content. Vague briefs get follow-up questions before drafting.
-2. **Duplicate check** — Fetch `website/pages-answers.json` and scan `metaTitle` + `content` for topic overlap. Close matches → suggest updating the existing article instead of splitting authority across near-duplicates.
-3. **Brand fetch** — Pull `terminology.md`, `tone.md`, `narrative.md`, `value-story.md`, `positioning.md`, `boilerplates.md` from GitHub. If any fetch fails, stop and tell the user.
-4. **Draft** — Follow `references/article-structure.md` for the exact 11-section template and `references/writing-style.md` for AEO-specific writing rules.
-5. **Compliance check** — Terminology, tone, claims, em dashes, emojis, meta length (≤160 chars), word count (1,200–1,500), no HTML tags. Fix violations; don't flag and deliver.
-6. **Deliver** — Save as `[slug].md` in the outputs directory. Artifact renders in the right panel for review.
+```
+approve: 1, 3, 5-7
+drop: 2, 6
+revise: 4 — make it about retention
+next
+```
 
-## Files
+Per-article scope in Phase B:
+```
+article 1: approve 1-4, drop 5
+article 2: approve 1, 3, 5; revise 2 — focus on operational load
+next
+```
+
+Free-form chat also works — the skill falls back to natural-language understanding when a message doesn't match.
+
+## When to use / not to use
+
+**Use when:** the colleague asks for an AEO article, GEO article, answer article, AI-search-optimized content, batch of answer ideas, or content for `/answers/`.
+
+**Do not use for:**
+- Regular blog posts → `blog-seo-content`
+- Customer stories → `case-study`
+- Social media posts → `social-media`
+- Website page copy → `brand-messaging`
+- Ad copy → `campaign-copy`
+
+## File layout
 
 ```
 aeo-content/
-├── SKILL.md                          Skill entry point — workflow, specs, compliance check
-├── README.md                         This file
-└── references/
-    ├── article-structure.md          Section-by-section template (definition → tables → FAQs)
-    └── writing-style.md              AEO-specific writing rules (citable phrasing, no fluff)
+├── SKILL.md                             Entry point — standing rules, both modes, approval syntax
+├── README.md                            This file
+├── references/
+│   ├── workflow-phases.md               Detailed spec of Phase A/B/C/D artifacts and approval flow
+│   ├── patterns/
+│   │   ├── definition.md                "What is X?" structure
+│   │   ├── procedural.md                "How to X?" structure
+│   │   └── comparative.md               "X vs Y" structure
+│   ├── writing-style.md                 Brand + AEO writing rules, banned constructs, no-HTML rule
+│   └── citation-playbook.md             Intent-conditional citation density rules
+├── examples/
+│   ├── activity-feeds.md                Single-article exemplar (passes compliance)
+│   ├── ideas-sample.md                  Phase A artifact sample
+│   └── questions-sample.md              Phase B artifact sample
+└── scripts/
+    ├── compliance.py                    Deterministic compliance checker (20 checks)
+    ├── fetch_brand.py                   GitHub blob-HTML fetcher for brand-messaging files
+    └── make_zip.py                      Bundles `outputs/*.docx` into a timestamped batch zip
 ```
-
-## Article specs
-
-| Field | Rule |
-|---|---|
-| Length | 1,200–1,500 words (hard cap at 1,500) |
-| Meta description | ≤160 characters including spaces — count, don't estimate |
-| Slug | Lowercase, hyphens, no spaces, derived from title |
-| Format | Clean markdown — headings, tables, lists. No HTML |
-
-## Structure (fixed)
-
-1. Title and meta description
-2. Definition paragraph (AI engines often pull this verbatim — the most important paragraph)
-3. Core components table
-4. Why it matters (comparison table or benefit list)
-5. Architecture options / approaches table
-6. Core features table
-7. Step-by-step implementation guide (8–14 steps)
-8. social.plus pitch section
-9. Metrics to track table
-10. FAQs (4–6 pairs)
-11. Conclusion
-
-## Writing style (strict)
-
-- Lead with the answer — first paragraph directly answers the question implied by the title.
-- Concrete over vague — specific numbers, ranges, named examples are more citable.
-- Neutral framing, confident recommendation — present the topic objectively, then recommend social.plus with conviction.
-- No marketing fluff ("revolutionize", "game-changing", "unlock the power of").
-- No em dashes — use parentheses or restructure.
-- No emojis.
-- Active voice.
-
-## Approved data
-
-- **Metric ranges from published data:** engagement rate 20–50%, retention lift 10–35%, active contributors 10–30%.
-- **Approved customer names:** Noom, Harley-Davidson, Smart Fit, Ulta Beauty, Betgames.
-- **Approved customer stats:** Noom (45M+ users), Harley-Davidson (1M+ community members), Smart Fit (60% MoM growth), Betgames (200M users).
-- Never invent statistics, quotes, or case study details.
-
-## URL format
-
-Always fetch via `github.com/.../blob/...` URLs. Never use `raw.githubusercontent.com` — blocked by network egress. Parse GitHub HTML pages by extracting the `<article class="markdown-body">` element.
 
 ## Output contract
 
-A single `.md` file in the outputs directory with:
+**Single deliverable per article: a `.docx` Word document.** The markdown intermediate (`[slug].draft.md`) is kept alongside for diff-able revisions. A separate automation (outside this skill) converts each `.docx` to Webflow-ready HTML and publishes at `/answers/[slug]`.
 
-- Title as `# Heading 1`
-- `Meta description:`, `Slug:`, `Alt text:` on their own lines below the title
-- Section headings as `## Heading 2`
-- Standard markdown tables, lists, bold — no HTML tags
+Because the output is Word, **no HTML of any kind appears in the document** — no JSON-LD, no `<script>`, no `<!-- comments -->`. Schema markup, canonical URLs, author, dates, and OG meta are handled by the Webflow template + downstream automation.
 
-Alt text format: `Abstract visualization of [main topic from title]`.
+The markdown intermediate uses labeled paragraphs for metadata (not YAML frontmatter, which doesn't survive docx conversion):
+
+```
+# Article title
+
+Meta description: ≤160 chars including spaces
+Slug: lowercase-with-hyphens
+Alt text: Abstract visualization of [main topic]
+Intent: definition | procedural | comparative
+
+[Answer-first block — sentences 1-2, 30-50 words combined]
+
+[TL;DR paragraph — 80-120 words]
+
+## First body section
+...
+```
+
+## Compliance checker — local use
+
+```bash
+# Intent auto-detected from the Intent: metadata line
+python3 scripts/compliance.py outputs/my-article.draft.md
+
+# Override intent (useful before metadata is final)
+python3 scripts/compliance.py outputs/my-article.draft.md --intent procedural
+
+# Override word-count range
+python3 scripts/compliance.py outputs/my-article.draft.md --min 900 --max 1400
+
+# Machine-readable
+python3 scripts/compliance.py outputs/my-article.draft.md --json
+```
+
+Exit 0 if no failures (warnings allowed), 1 if any failure.
+
+The 20 checks:
+
+| Category | Checks |
+|---|---|
+| Metadata | H1 title, Meta description, Slug, Alt text, Intent (+ intent validity) |
+| Length | meta description ≤160 chars; word count inside intent-specific typical range (WARN, not fail) |
+| Answer-first | sentences 1-2 in 30-50 word range; target-keyword phrase in sentence 1 |
+| Style | no em dashes, no emojis, no forbidden terms, no filler openers |
+| Structure | no HTML of any kind (tags, comments, JSON-LD); single H1; no skipped heading levels |
+| Citations | intent-conditional minimum (definition ≥2, comparative ≥3, procedural any) |
+| Claims | approved-customer whitelist (Noom, Harley-Davidson, Smart Fit, Ulta Beauty, Betgames) |
+
+## Brand-fetch helper — local use
+
+```bash
+# Fetch all six brand files to stdout
+python3 scripts/fetch_brand.py
+
+# Single file
+python3 scripts/fetch_brand.py --file tone.md
+
+# Write to a directory
+python3 scripts/fetch_brand.py --out /tmp/brand/
+```
+
+Uses `github.com/.../blob/...` URLs exclusively — raw and API hosts are blocked by runtime network egress. Extraction uses stdlib `html.parser` with a regex fallback; fetches retry with exponential backoff on transient errors.
+
+## Batch zip helper — local use
+
+```bash
+# Zip every .docx in outputs/ into outputs/aeo-batch-YYYY-MM-DD.zip
+python3 scripts/make_zip.py
+
+# Custom output path
+python3 scripts/make_zip.py --out outputs/custom-batch.zip
+
+# Specific files only
+python3 scripts/make_zip.py --files outputs/a.docx outputs/b.docx
+```
+
+## Related skills
+
+- `anthropic-skills:docx` — called by this skill in Phase D to produce the final `.docx`
+- `internal-linking-optimizer` — called by this skill to add internal links; do not re-implement
+- `blog-seo-content` — long-form blog posts, pillar pages
+- `case-study` — customer stories
+- `social-media` — LinkedIn, Instagram, X
+- `brand-messaging` — website and general copy
+- `campaign-copy` — paid-campaign copy
+- `site-intelligence` — content audits beyond `pages-answers.json`
+
+## Research sources that shaped this skill
+
+- [Aggarwal et al., "GEO: Generative Engine Optimization" (arxiv 2311.09735)](https://arxiv.org/abs/2311.09735)
+- [Semrush — AI Search SEO Traffic Study 2025](https://www.semrush.com/blog/ai-search-seo-traffic-study/)
+- [Semrush — Most-Cited Domains in AI](https://www.semrush.com/blog/most-cited-domains-ai/)
+- [Conductor — 2026 AEO/GEO Benchmarks](https://www.conductor.com/academy/aeo-geo-benchmarks-report/)
+- [Anthropic — Agent Skills docs](https://code.claude.com/docs/en/skills)
+- [anthropics/skills — skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator)
+- [obra/superpowers — writing-skills lessons](https://github.com/obra/superpowers/tree/master/skills/writing-skills)
