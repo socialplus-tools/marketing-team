@@ -55,13 +55,12 @@ Start a new chat and type:
 
 What should happen:
 
-1. The skill asks you 2-3 short intake questions (topic, audience, intent).
-2. It fetches the brand-messaging files from GitHub.
-3. It drafts the article (about 90 seconds).
-4. It runs compliance checks automatically.
-5. It hands you a `.docx` file to download from the artifact panel.
+1. It fetches the brand-messaging files from GitHub.
+2. It drafts the article (about 90 seconds).
+3. It runs compliance checks automatically.
+4. It hands you a `.docx` file to download from the artifact panel.
 
-If all five things happen, you're set.
+If all four things happen, you're set. The skill should not ask you any questions when the brief is clear. It may ask a single clarifying question if something is genuinely ambiguous (for example, "feeds" could mean activity feeds, news feeds, or RSS). If it asks more than one question, something is off — flag it.
 
 ---
 
@@ -73,14 +72,13 @@ When you want a single AEO answer article:
    - `write an AEO article on how to add chat to a mobile app`
    - `write an answer page defining zero-party data`
    - `write an AEO comparison of activity feeds vs. group chats`
-2. **Answer the intake questions**. The skill asks about topic, audience, and intent (definition / how-to / comparative). If you are not sure, say "you choose."
-3. **Wait for the draft**. It appears in the artifact panel. Takes about 90 seconds.
-4. **Ask for edits in chat**. Examples:
+2. **Wait for the draft**. The skill does not ask intake questions when the brief is clear — it goes straight to drafting. The draft appears in the artifact panel in about 90 seconds. If the skill does ask a clarifying question (rare — only when the topic itself is ambiguous), answer it and move on.
+3. **Ask for edits in chat**. Examples:
    - `make the intro shorter`
    - `add a pitfalls section`
    - `focus the pitch on retention, not engagement`
    - `rewrite FAQ 3 to be about moderation`
-5. **Download**. When you are satisfied, the skill delivers a `.docx`. Click it in the artifact panel to download.
+4. **Download**. When you are satisfied, the skill delivers a `.docx`. Click it in the artifact panel to download.
 
 ---
 
