@@ -1,173 +1,278 @@
 ---
 name: aeo-content
-description: "Write AEO (Answer Engine Optimization) articles for the social.plus /answers/ collection. These are structured reference articles designed to be indexed and cited by AI search engines (ChatGPT, Claude, Perplexity, Gemini, Google AI Overview, Copilot). Use this skill when the user asks for an AEO article, an answer article, AI-optimized content, content for the /answers/ collection, or any reference-style article meant for AI citation. Also trigger when the user says 'write an answer page', 'create AEO content', 'answer engine article', or mentions optimizing content for AI search. Do NOT use for regular blog posts (use blog-seo-content), customer stories (use case-study), or social media posts (use social-media)."
+description: "Use this skill to write AEO / GEO articles for the social.plus /answers/ collection — reference-style pages engineered to be cited by ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews, and Copilot. Trigger on phrases like 'write an answer page', 'AEO article', 'GEO article', 'answer article', 'AI-optimized content', 'write for AI search', 'make this citable by AI', 'content for /answers/'. Do NOT use for blog posts (use blog-seo-content), customer stories (use case-study), social posts (use social-media), website page copy (use brand-messaging), or paid-campaign copy (use campaign-copy)."
 ---
 
 # AEO Article Generation
 
-AEO (Answer Engine Optimization) articles are structured reference content published at `social.plus/answers/[slug]`. They exist so AI search engines can index and cite them. They are not blog posts — they are clear definitions, organized tables, practical steps, and direct answers.
+AEO articles live at `social.plus/answers/[slug]`. They exist so large-language models will extract and cite them. Every rule in this skill serves that goal.
 
-## Before you write: ask what to cover AND check for duplicates
+## Standing instructions
 
-Before fetching brand files or writing anything, ask the user what the article should be about. Use the AskUserQuestion tool. You need enough context to write a focused, comprehensive reference article. Good things to learn:
+This file is loaded once per session and cached in context. Everything below is a standing rule for the whole task, not a one-time checklist. Treat each numbered step as a gate — if you can't satisfy it, stop and surface the problem rather than proceeding.
 
-- The topic or question the article should answer
-- Any specific angle, framework, or product area to focus on
-- Whether this targets a specific audience (developers, product leaders, business stakeholders)
-- Any specific keywords or phrases the article should target
-- Whether it relates to or should reference other existing content
+## Three load-bearing AEO principles
 
-If the user gives a clear, detailed brief, move on. If the brief is vague (e.g., "write something about feeds"), ask follow-up questions to narrow the scope. A vague brief produces a vague article.
+Every structural and stylistic decision ties back to one of these. If a decision doesn't obviously serve one of them, reconsider.
 
-### Duplicate-topic check (mandatory)
+1. **Answer-first extractability.** First sentence answers the title's question using the exact target-keyword phrase. First two sentences fit in 30-50 words. TL;DR paragraph of 80-120 words sits immediately below. This is the block LLMs extract verbatim.
+2. **Semantic chunking.** Every major section is a self-contained ~150-word passage. Entities are defined inline on first mention within a chunk, not only in the intro.
+3. **Concrete grounding.** Named examples, numeric ranges, and internal consistency with product terminology. Citations where they genuinely support a claim — not as SEO padding.
 
-Once you have a clear topic, fetch the existing /answers/ inventory and verify you are not about to duplicate an existing article:
+## Single article vs. batch
+
+Two modes, chosen from the brief:
+
+- **Single article** — the user asks for one specific article ("write an AEO article on activity feeds"). Run the linear flow in "Before writing" below, then "Writing" and "Delivery".
+- **Batch** — the user asks for multiple articles, a theme, or ideas ("5 articles on community infrastructure", "some ideas for /answers/", "a batch on moderation"). Run the four-phase workflow described in "Batch workflow" near the end of this file. Full phase specs live in `references/workflow-phases.md`.
+
+When unclear, ask: "Single article now, or a batch of ideas to work through in phases?" Default to batch if the brief mentions a count ≥2 or the word "ideas".
+
+## Before writing
+
+### 1. Intake
+Use `AskUserQuestion` to capture: topic, the exact question the article answers, intent (definition / procedural / comparative), target audience, must-cover sub-topics, and any related content. If the brief is vague, ask follow-ups before anything else. Vague briefs produce vague articles.
+
+### 2. Duplicate-topic check
+Fetch `https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-answers.json` and scan `metaTitle` and heading hierarchy for topic overlap. If a close match exists, surface it and ask whether to update instead. Also scan `pages-glossary.json` — if the topic is a definition that belongs in the glossary, route there.
+
+### 3. Brand-messaging fetch (non-negotiable)
+Run `scripts/fetch_brand.py` to pull:
 ```
-https://github.com/cruciate-hub/marketing-team/blob/main/website/pages-answers.json
+terminology.md  tone.md  narrative.md  value-story.md  positioning.md  boilerplates.md
+```
+Always use `github.com/.../blob/...` URLs — raw and API hosts are blocked by network egress. If any fetch fails, stop and tell the user. Do not proceed on memorized brand content.
+
+The pitch section at the end of every article is **generated from the fetched brand-messaging files**, not from a template inside this skill. `positioning.md` and `value-story.md` define what social.plus says about itself; `boilerplates.md` provides the approved long-form company descriptions. The skill defers to those files.
+
+### 4. Question research
+Before writing the FAQ section, surface real follow-up questions. The skill uses Ahrefs MCP tools when available and falls back to WebSearch otherwise:
+
+- **Preferred (Ahrefs MCP tools available):**
+  - `serp-overview` for the article's core question — returns the literal PAA block and "Related searches" slot. Most accurate source.
+  - `keywords-explorer-search-suggestions` for question-form variants of the target keyword.
+  - `keywords-explorer-overview` for the target keyword itself — confirms volume and intent alignment.
+- **Fallback (no Ahrefs):**
+  - `WebSearch` on the core question; capture any "People Also Ask" phrasings visible in the results.
+  - Check the most relevant subreddit (top-of-all-time + top-of-year for the topic).
+- Write the FAQ section using these real phrasings, not invented ones. In `outputs/questions.md`, the **Source** column records where each candidate came from (Ahrefs PAA, Ahrefs suggestions, WebSearch, Reddit, LLM fallback).
+- Do not embed source URLs in the document itself (no HTML comments — the output is a Word document). List the source URLs in the final message to the user so the team can log them wherever they track FAQ research.
+
+## Article structure — choose by intent
+
+Match structure to query intent. Do not force every article into one template. Each pattern is a starting point; adapt sections if the topic demands it.
+
+| Intent signal | Pattern file |
+|---|---|
+| "What is X?" / topic is a concept | `references/patterns/definition.md` |
+| "How to X?" / "How do you X?" / "Steps to..." | `references/patterns/procedural.md` |
+| "X vs Y" / "X or Y" / "alternatives to X" | `references/patterns/comparative.md` |
+
+Every pattern shares these required elements: answer-first block (sentences 1-2 = 30-50 words, TL;DR paragraph = 80-120 words), at least one markdown table, 4-6 FAQ pairs from real phrasings, pitch section (brand-driven), conclusion. No fixed section count beyond those elements — if a sub-topic doesn't belong in this article, don't add it.
+
+## Writing rules (essentials)
+
+Full rules: `references/writing-style.md`. Non-negotiables:
+
+- **Sentence 1** = a direct definition containing the exact target-keyword phrase. 15-25 words.
+- **Sentence 2** = the mechanism, scope, or outcome. 15-25 words. Combined with sentence 1: 30-50 words total.
+- **TL;DR paragraph** immediately below = 80-120 words, structured as expanded definition → mechanism → outcome.
+- **~150-word chunks.** Each H2 section is self-contained. A reader landing mid-page still understands it.
+- **First mention of a technical entity gets an inline one-clause gloss** using canonical phrasing from `terminology.md`.
+- **Citation density depends on intent** (see below) — don't force citations into product how-tos where they'd be faked.
+- **Concrete over vague.** Named examples and numeric ranges beat adjectives.
+- **Banned constructs:** em dashes, emojis, "revolutionize / unlock / game-changing / leverage", "in today's / now more than ever / in the ever-evolving" openers, passive voice where active works, growth guarantees, wrong `social.plus` casing.
+
+## Citation density by intent
+
+Forcing external citations into product how-tos produces faked or irrelevant links. Apply per-intent rules:
+
+| Intent | External citations | Internal grounding |
+|---|---|---|
+| Definition | ≥2 recommended — cite authoritative sources for the definition and scale | Named social.plus entities and inline glosses |
+| Comparative | ≥3 recommended — you're comparing things, cite the things | Dimension-specific data points, honest positioning |
+| Procedural | None required | Internal product consistency, named methods, numeric ranges, concrete timelines |
+
+All intents: every numeric claim needs a source (internal approved list or external link). No anonymous or content-farm citations.
+
+Full guidance: `references/citation-playbook.md`.
+
+## Approved data and customer names
+
+Use only these. Never fabricate.
+
+**Metric ranges (from published social.plus data):**
+- Engagement rate: 20-50%
+- Retention lift: 10-35%
+- Active contributors: 10-30%
+
+**Approved customers:** Noom, Harley-Davidson, Smart Fit, Ulta Beauty, Betgames.
+
+**Approved customer stats:**
+- Noom: 45M+ users
+- Harley-Davidson: 1M+ community members
+- Smart Fit: 60% MoM growth
+- Betgames: 200M users
+
+## Output format
+
+The final deliverable is a **Word document** (`.docx`) saved in the outputs directory, filename = `[slug].docx`. A separate automation (outside this skill) converts the Word document to Webflow-ready HTML.
+
+Because the output is Word, **no HTML of any kind appears in the document** — no JSON-LD, no `<script>`, no `<!-- comments -->`, no inline HTML anywhere. Schema, canonical tags, and page meta are handled downstream by the Webflow automation plus the Webflow template itself.
+
+### Two-stage production
+
+1. **Draft a markdown intermediate** at `outputs/[slug].draft.md`. This is what the compliance script reads.
+2. **Convert to `.docx`** by invoking the `anthropic-skills:docx` skill with the intermediate as input. The docx skill preserves headings, tables, lists, bold, and hyperlinks. Deliver the resulting `outputs/[slug].docx` as the primary artifact.
+
+Keep the `.draft.md` alongside the `.docx` so maintainers can diff edits across versions.
+
+### Markdown intermediate structure
+
+```
+# [Article title]
+
+Meta description: [≤160 chars including spaces]
+Slug: [lowercase-with-hyphens, derived from title]
+Alt text: Abstract visualization of [main topic from title]
+Intent: [definition | procedural | comparative]
+
+[Answer-first block — sentences 1-2, 30-50 words combined]
+
+[TL;DR paragraph — 80-120 words]
+
+## [First body section]
+
+...
 ```
 
-Scan each item's `metaTitle` and `content` (heading hierarchy) for topic overlap. If a close match exists:
-- Tell the user the existing article URL and ask whether they want to update it instead of writing a new one.
-- If they want a new article, ask how the angle should differ from the existing one (different audience, deeper technical depth, newer data, etc.) and verify the difference is substantial enough to justify a separate page.
+Rules for the intermediate:
+- `# Title` is the only H1.
+- The four labeled-paragraph metadata lines sit between the H1 and the answer-first block. They become body paragraphs in the Word doc and the Webflow automation parses and strips them.
+- The answer-first block and TL;DR sit under the metadata, above the first H2.
+- Markdown tables (pipes and dashes), numbered/bulleted lists, `**bold**`, and inline markdown links `[anchor](URL)` are all supported by the docx skill's conversion.
+- External citations as markdown links where the intent calls for them. Internal links (to social.plus URLs) are handled by `internal-linking-optimizer`.
 
-Duplicate /answers/ pages compete for the same AI citation slot and split authority — always prefer updating an existing article over creating a near-duplicate.
+Alt text pattern: `Abstract visualization of [main topic from title]`.
 
-## Brand messaging: fetch before writing
+## Internal linking
 
-AEO articles must sound like social.plus, not like generic AI output. Before writing, fetch these files from GitHub. They are non-negotiable.
+After drafting and before running compliance, invoke the `internal-linking-optimizer` skill in **draft mode**:
+- Pass: full article markdown, the article title (= target keyword), content type `AEO`.
+- The optimizer returns 1-3 markdown links. AEO articles use markdown links only, never HTML.
+- Allowed sections: the definition chunk, "why it matters", architecture/features, step-by-step.
+- Disallowed sections: FAQs, conclusion, metrics table — these stay link-free for clean citation extraction.
+- Never force links. Zero is acceptable.
 
-Always fetch:
+## Compliance — deterministic
+
+Run `python3 scripts/compliance.py outputs/[slug].draft.md` before converting to `.docx`. The script reads the markdown intermediate. Exit 0 = ready to convert; exit 1 = fix first.
+
+Checks:
+- Required labeled-paragraph metadata present (title from H1; Meta description, Slug, Alt text, Intent from labeled paragraphs under H1)
+- Intent is one of: definition, procedural, comparative
+- Meta description ≤ 160 characters including spaces
+- Title-keyword phrase appears in sentence 1 of the answer-first block
+- Sentence 1 does not start with a filler opener ("In today's…", "Now more than ever…", "In the ever-evolving…", "In a world where…")
+- First two sentences in 30-50 word range
+- No em dashes, no emojis, no forbidden terms
+- No HTML of any kind — no tags, no comments, no JSON-LD. The output is a Word document.
+- Heading hierarchy well-formed (single H1, no skipped levels)
+- External citations count meets intent target (definition ≥2, comparative ≥3, procedural any)
+- Approved-customer whitelist — no mentions of unapproved customer names
+- Word count inside the intent-specific typical range (warning only, does not fail)
+
+Fix every failure before delivering. Warnings are informational — address if it makes the article stronger, skip if not.
+
+## Self-check before delivery
+
+After the compliance script passes, answer each of these yes/no before returning the article:
+
+1. Does sentence 1 literally answer the question the title asks, using the target-keyword phrase?
+2. Does the TL;DR paragraph stand alone as an extractable 80-120 word passage?
+3. Does every numeric claim have a source (approved-data list or external citation)?
+4. Does the pitch section reflect the fetched `positioning.md` / `value-story.md` / `boilerplates.md`, not a template from memory?
+5. Are the FAQ questions phrased from real-user research (not invented patterns)?
+6. Did the compliance script exit 0?
+
+Any "no" → revise before delivering. Do not ship with unresolved "no".
+
+## Delivery
+
+1. After compliance passes, convert `outputs/[slug].draft.md` to `outputs/[slug].docx` by invoking the `anthropic-skills:docx` skill with the intermediate as input.
+2. Tell the user the `.docx` is ready in the artifact panel and the `.draft.md` is kept alongside for diff-able revisions.
+3. In the same message, list the FAQ source URLs used in the research step (since they are not embedded in the document).
+4. For edit requests, edit the `.draft.md`, re-run compliance, then re-convert to `.docx` and overwrite. Always keep the `.draft.md` in sync with the `.docx`.
+
+## Rationalization table — common shortcuts that fail
+
+| Excuse | Reality |
+|---|---|
+| "The intro reads better with context first." | LLMs extract the first two sentences. If the answer isn't there, it isn't cited. |
+| "Procedural articles need external citations too." | No — they need internal product consistency. Fake citations are worse than none. |
+| "I can skip the duplicate check — this topic feels unique." | Check anyway. Rewriting into an existing page beats creating a near-duplicate. |
+| "The brand fetch failed but I remember the tone." | Stop. Memorized brand content drifts. Tell the user. |
+| "I'll eyeball compliance — the article looks clean." | Run the script. Meta length, keyword-in-sentence-1, and filler openers consistently slip past eyeball review. |
+| "I can pad to hit the word count target." | Padding dilutes chunk quality. Under target → the brief is thinner than expected; raise it with the user. Over target → cut padding, not substance. |
+| "The pitch template is easier than adapting from brand files." | The pitch is brand-driven, not template-driven. Generic pitches get skipped by LLMs. |
+| "I can invent a plausible customer example." | Never. Use the approved list or leave the example out. |
+
+## Batch workflow
+
+When the brief covers multiple articles, run these four phases instead of the single-article flow. Each phase produces a markdown artifact in `outputs/` that the colleague reviews. She approves or refines via chat using the approval syntax below. The skill updates the artifact and moves to the next phase when she says `next`. Full specs for each phase live in `references/workflow-phases.md`.
+
+### Phase A — Ideas
+- Run intake once, then the brand fetch once, then scan `pages-answers.json` (and `pages-glossary.json`) for gaps.
+- **Fit scoring:** if the Ahrefs MCP tools are available, use `keywords-explorer-overview` to attach real search volume and difficulty to each candidate's target keyword, and use `site-explorer-organic-keywords` on existing /answers/ URLs to catch semantic duplicates the JSON scan missed. If Ahrefs is unavailable, fall back to qualitative fit (high/medium/low) based on topic relevance and gap coverage.
+- Write `outputs/ideas.md` — 8-15 candidate articles with: #, title, intent, rationale, target keyword, fit (volume + difficulty if Ahrefs is available, or qualitative otherwise).
+- She approves a subset. The skill rewrites `outputs/ideas.md` to show only the approved set.
+
+### Phase B — Questions
+- For each approved idea, run the question research (PAA + Reddit).
+- Write `outputs/questions.md` — one section per approved idea, 8-10 candidate FAQ questions each.
+- She approves per-article. The skill updates the file.
+
+### Phase C — Drafts
+- For each approved idea with approved questions, draft `outputs/[slug].draft.md` following the single-article structure (choose pattern by intent).
+- Write `outputs/overview.md` — one row per article with title, word count, compliance status.
+- She can chat edits on any draft ("article 2 shorter", "add pitfalls to article 3"). The skill edits that draft, re-runs `scripts/compliance.py`, updates `overview.md`.
+
+### Phase D — Delivery
+- When all drafts pass compliance, convert each `[slug].draft.md` to `outputs/[slug].docx` via the `anthropic-skills:docx` skill.
+- Run `python3 scripts/make_zip.py` to bundle all `.docx` files into `outputs/aeo-batch-YYYY-MM-DD.zip`.
+- Send the colleague a final chat summary listing: each `.docx` filename, the zip filename, and the FAQ source URLs per article. Google Docs save is deferred — she uploads the `.docx` or the zip to Drive manually.
+
+### Approval syntax
+
+Consistent across phases. Parse these lines at the start of each chat turn; fall back to natural language if the message doesn't match.
+
 ```
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/terminology.md
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/tone.md
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/narrative.md
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/value-story.md
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/positioning.md
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/boilerplates.md
+approve: 1, 3, 5-7
+drop: 2, 6
+revise: 4 — make it about retention
+next
 ```
 
-Always use `github.com/.../blob/...` URLs. Never convert to `raw.githubusercontent.com` or `api.github.com` — both are blocked by network egress.
-
-Since these are GitHub HTML pages, extract the markdown content from the `<article>` element with class `markdown-body`. Use Python to parse:
-
-```python
-import re, html
-match = re.search(r'<article[^>]*class="[^"]*markdown-body[^"]*"[^>]*>(.*?)</article>', content, re.DOTALL)
-if match:
-    text = re.sub(r'<[^>]+>', '\n', match.group(1))
-    text = html.unescape(text)
+For Phase B, scope to an article:
+```
+article 1: approve 1-4, drop 5
+article 2: approve 1, 3, 5; revise 2 — drop the pricing angle
+next
 ```
 
-If a fetch fails, tell the user the brand guidelines are unavailable and you cannot guarantee brand alignment. Do not proceed with stale or memorized content.
+### When to abort a batch
 
-## Writing the article
+- Brand fetch fails → stop at Phase A, tell her, do not proceed on memorized brand.
+- No gaps found in `pages-answers.json` → surface this at Phase A, ask whether to update existing articles instead.
+- Compliance failures in Phase C that can't be auto-fixed after one rewrite → surface to her before moving to Phase D.
+- `anthropic-skills:docx` unavailable → tell her; skip Phase D conversion; deliver the `.draft.md` files as fallback.
 
-### Specs
+## Related skills
 
-- **Length:** 1,200 to 1,500 words. If over, cut the least essential table rows or shorten implementation steps. Do not exceed 1,500.
-- **Format:** Clean readable text with headings, tables, and lists. No HTML markup.
-- **Meta description:** Maximum 160 characters including spaces. Count the characters before finalizing — do not estimate.
-- **Slug:** Lowercase, hyphens, no spaces. Derived from title.
-
-### Structure
-
-Read `references/article-structure.md` for the exact section-by-section template. Every article follows this structure in this order:
-
-1. Title and meta description
-2. Definition paragraph (the most important paragraph — AI engines often pull this verbatim)
-3. Core components table
-4. Why it matters (comparison table or benefit list)
-5. Architecture options / approaches table
-6. Core features table
-7. Step-by-step implementation guide (8-14 steps)
-8. social.plus pitch section
-9. Metrics to track table
-10. FAQs (4-6 pairs)
-11. Conclusion
-
-### Writing style
-
-Read `references/writing-style.md` for AEO-specific writing rules. Key principles:
-
-- Lead with the answer. The first paragraph directly answers the question implied by the title.
-- Be concrete. Specific numbers, ranges, and named examples are more citable than vague claims.
-- Neutral in framing, confident in recommendation. Present the topic objectively, then recommend social.plus with conviction.
-- No marketing fluff. No "revolutionize", "game-changing", "unlock the power of".
-- No em dashes. Use parentheses or restructure the sentence.
-- No emojis.
-- Active voice.
-
-### Data and claims
-
-- Use metric ranges from published data: engagement rate 20-50%, retention lift 10-35%, active contributors 10-30%
-- Only cite approved customer names: Noom, Harley-Davidson, Smart Fit, Ulta Beauty, Betgames
-- Only cite published customer stats: Noom (45M+ users), Harley-Davidson (1M+ community members), Smart Fit (60% MoM growth), Betgames (200M users)
-- Never invent statistics, quotes, or case study details
-
-## Delivering the article
-
-Save the article as a `.md` file in the outputs directory using the slug as the filename (e.g., `adding-activity-feeds-to-apps.md`). This renders as an artifact in the right panel of the conversation, where the user can read, review, and request changes.
-
-The markdown file should contain:
-- Title as `# Heading 1`
-- `Meta description:`, `Slug:`, and `Alt text:` on their own lines below the title
-- Section headings as `## Heading 2`
-- Standard markdown tables (pipes and dashes)
-- Standard markdown numbered and bulleted lists
-- Bold text with `**double asterisks**`
-
-Generate alt text as: "Abstract visualization of [main topic from title]"
-
-Use clean markdown with no HTML tags. The article should render well in the artifact viewer and also paste cleanly into Word or Google Docs (markdown tables convert to real tables on paste).
-
-After saving, tell the user the article is ready for review in the artifact panel. They can ask for changes in the conversation. When they are satisfied, they can copy the content and paste it into Word or Google Docs — tables and formatting will carry over.
-
-### Handling edit requests
-
-When the user asks for changes (e.g., "make the intro shorter", "swap the comparison table", "add a FAQ about pricing"), edit the existing .md file rather than rewriting from scratch. After editing, the artifact updates automatically. Re-run the compliance check on the modified sections before confirming the edit is done.
-
-## Internal links
-
-After writing the article and before the compliance check, invoke the `internal-linking-optimizer` skill in **draft mode**. Pass it:
-
-- The full article markdown (title + body)
-- The target keyword (this is the title, since AEO articles target the question the title asks)
-- Content type: AEO (so it returns markdown links and applies AEO link constraints)
-
-The optimizer fetches `link-strategy.md` plus `pages-marketing.json`, `pages-use-cases.json`, `pages-glossary.json`, and `pages-answers.json` (for related-answer links). It returns 1-3 link suggestions in markdown format `[anchor](URL)`.
-
-**AEO-specific constraints the optimizer applies:**
-
-- **Markdown links only** — never HTML. AEO articles are pure markdown.
-- **1-3 internal links per article max.** AEO articles are reference content, not blog posts. Too many links dilute the answer.
-- **Allowed sections:** definition paragraph, "why it matters", architecture/features sections, step-by-step implementation. **Disallowed sections:** FAQs, conclusion, metrics table — these stay link-free so AI engines cite them cleanly.
-- **Definitional vs commercial intent:** prefer glossary links (`/glossary/*`) for definitional sections; reserve product/use-case links for the social.plus pitch section.
-- **Related-answer links:** at most 1 AEO → AEO link, placed where the linked article meaningfully extends a concept (e.g., a generic API article linking to a more specific Chat API article).
-
-If the optimizer returns zero appropriate suggestions, that's fine — AEO articles don't need internal links to function as reference content. Don't force links.
-
-Resolve cannibalization warnings before final output. If the article's title is the canonical anchor for a competing-pages situation, address it explicitly in the definition paragraph (e.g., "X refers to two related concepts: ...").
-
-## Compliance check
-
-Before delivering, run this check from the main `brain.md`:
-
-1. **Terminology.** Scan for forbidden terms: "social network", "forum platform", "chat tool", "plug and play" (outside dev docs), growth guarantees.
-2. **Tone.** Does it sound like social.plus — or like default Claude? If you cannot tell the difference, it is default Claude. Rewrite.
-3. **Claims.** No invented statistics, customer names, quotes, features, or performance claims.
-4. **Em dashes.** None allowed. Use parentheses or restructure.
-5. **Emojis.** None allowed.
-6. **Meta description.** Count the characters. Must be 160 or fewer including spaces.
-7. **Word count.** Must be 1,200 to 1,500 words.
-8. **HTML tags.** None allowed in the output. Pure markdown only.
-
-If any check fails, fix the output before delivering. Do not flag the issue and deliver anyway — fix it.
-
-## What NOT to do
-
-- Do not run keyword research. The title is the target keyword phrase. The user provides the topic.
-- Do not output HTML. The Make.com pipeline handles HTML conversion separately.
-- Do not skip the intake question. Every article starts by asking what the user wants to cover.
-- Do not skip the brand messaging fetch. If the files are unavailable, stop and tell the user.
-- Do not fabricate statistics, customer names, quotes, or performance claims.
-- Do not use competitor names in a disparaging way.
+- `blog-seo-content` — long-form blog posts and pillar pages
+- `case-study` — customer stories
+- `social-media` — LinkedIn, Instagram, X
+- `brand-messaging` — general website copy
+- `campaign-copy` — ads and campaign landing pages
+- `internal-linking-optimizer` — called by this skill; do not re-implement
+- `site-intelligence` — content audits beyond `pages-answers.json`

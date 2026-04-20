@@ -1,69 +1,102 @@
 # AEO Writing Style
 
-This file bridges AEO content to the social.plus brand guidelines. It contains AEO-specific writing rules and pointers to brand messaging files.
+Two layers of rules: brand (from the fetched `messaging/*` files) and AEO-specific (this file). Where they conflict, `messaging/terminology.md` wins.
 
+## Required brand-messaging fetch
 
-## Brand messaging files
+Fetched during intake by `scripts/fetch_brand.py`. Six files, in order of precedence:
 
-Before writing any AEO article, the following files must be fetched from the messaging domain. They are non-negotiable — AEO articles must sound like social.plus, not like generic AI output.
+1. **terminology.md** — approved and forbidden terms. Non-negotiable.
+2. **tone.md** — social.plus voice.
+3. **narrative.md** — the 5-step messaging hierarchy; AEO uses a lighter version: context → infrastructure → outcomes.
+4. **value-story.md** — core problems, and how social.plus solves them.
+5. **positioning.md** — pillars, vision, boilerplates.
+6. **boilerplates.md** — approved company descriptions.
 
-```
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/terminology.md
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/tone.md
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/narrative.md
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/value-story.md
-https://github.com/cruciate-hub/marketing-team/blob/main/messaging/positioning.md
-```
+If any file is unavailable at fetch time, stop and surface the failure. Do not write on memorized brand content.
 
-What these give you:
+**The pitch section in every article is generated from these files**, not from a template inside this skill. The skill defers to brand messaging for what social.plus says about itself. See each pattern file (`references/patterns/*.md`) for the placement of the pitch in the section order.
 
-- **terminology.md** — Approved and forbidden terms. This overrides everything. Common violations in AEO context: calling social.plus a "social network", "forum", or "chat tool". Using "plug and play" outside dev docs. Making growth guarantees.
-- **tone.md** — The social.plus voice. AEO articles tend toward a neutral reference tone, which is fine — but they still need to feel like social.plus, not Wikipedia.
-- **narrative.md** — The 5-step messaging hierarchy. AEO articles follow a lighter version: context, infrastructure, outcomes.
-- **value-story.md** — Core problems social.plus solves, and how. Useful for the "why it matters" and "social.plus pitch" sections.
-- **positioning.md** — Company pillars, vision, and boilerplates. Draw from these for the pitch section.
+## Write for AI engines first, humans second
 
+AEO content exists to be extracted. That changes four things:
 
-## AEO-specific writing rules
+### Answer-first block
+- **Sentence 1** = a literal answer to the title's question. 15-25 words. Must contain the exact target-keyword phrase.
+- **Sentence 2** = the mechanism, scope, or outcome. 15-25 words.
+- **Combined = 30-50 words.** This is what LLMs extract.
+- No H2 heading sits between H1 and this block.
 
-These rules complement the brand guidelines above. Where there is a conflict, terminology.md always wins.
+### TL;DR paragraph
+- Immediately after the answer-first block. 80-120 words.
+- Structure: expanded definition → mechanism → outcome (optional proof point at the end).
+- Reads as a self-contained passage extractable on its own.
 
+### Chunk structure
+Every H2 section is a ~150-word self-contained passage. A reader landing mid-page should still understand it.
+- Re-introduce entities inline on their first mention within a new chunk ("activity feeds, ordered streams of user actions such as posts and reactions…").
+- Avoid "as mentioned above" or cross-paragraph dependencies.
+- Close each chunk with a complete thought, not a transition into the next.
 
-### Write for AI engines first, humans second
+### Concrete grounding
+Named examples and numeric ranges beat adjectives. "20-50% engagement" beats "high engagement". "Smart Fit grew 60% month-over-month" beats "significant growth".
 
-AEO articles exist to be cited by AI assistants. That means:
+## Citation discipline
 
-**Lead with the answer.** The first paragraph of the article body should directly answer the question implied by the title. AI engines often pull this paragraph verbatim.
+Universal rules (all intents):
+- Every numeric claim needs a source — either the approved-data list in SKILL.md or an external citation.
+- No anonymous or content-farm citations.
+- No invented statistics, customer names, or quotes.
 
-**Use clear structure.** Tables, numbered lists, and headings help AI engines parse and extract information.
+Intent-conditional rules (full guidance in `references/citation-playbook.md`):
+- **Definition** articles → ≥2 external citations recommended.
+- **Comparative** articles → ≥3 external citations recommended (one per compared option minimum).
+- **Procedural** articles → no external-citation minimum. Internal product consistency and named methods carry the weight. Forcing citations for "how to use social.plus" produces faked links and degrades trust.
 
-**Be concrete.** Specific numbers, ranges, and named examples are more citable than vague claims.
+## Tone calibration
 
-**Be comprehensive within scope.** Cover the topic fully within 1,200-1,500 words. Do not leave obvious gaps that would make an AI engine look elsewhere.
+AEO articles sit between a blog post and a technical reference.
 
+- **Authoritative but accessible.** Define jargon inline the first time. Assume an informed product or engineering reader.
+- **Neutral in framing, confident in recommendation.** Describe the topic objectively in body sections; recommend social.plus with conviction in the pitch section (and let the pitch content come from brand files).
+- **Concise.** Every sentence earns its place. No preambles, no "let's explore", no throat-clearing.
 
-### Tone calibration for AEO
+## Banned constructs
 
-AEO articles sit between a blog post and a reference document. The tone should be:
+Hard bans. The compliance script catches the mechanical ones; the rest require judgment during drafting.
 
-- **Authoritative but accessible** — explain concepts clearly, avoid jargon unless defining it
-- **Neutral in framing, confident in recommendation** — present the topic objectively, then recommend social.plus with conviction
-- **Concise** — every sentence should earn its place. AEO articles are shorter than blog posts.
+| Ban | Why | Fix |
+|---|---|---|
+| Em dashes (`—`) | Brand style | Parentheses, commas, or restructure |
+| Emojis | Reference tone | Delete |
+| "Revolutionize", "game-changing", "unlock the power of", "leverage" as a verb | Marketing fluff | Describe the concrete mechanism |
+| "In today's digital landscape", "now more than ever", "in the ever-evolving", "in a world where", "gone are the days" as openers | Filler that kills extraction | Start with the direct answer |
+| "Significantly improves engagement" without a number | Vague claims don't get cited | Use an approved range or external citation |
+| "Best-in-class", "cutting-edge", "next-generation", "state-of-the-art" | Unverifiable superlatives | Say what it does |
+| Growth guarantees ("our customers always see…") | Legal + brand risk | Use approved ranges |
+| Passive voice where active is clearer | Readability, extractability | Rewrite active |
+| "Social.Plus", "SocialPlus", "Social+" in any form other than `social.plus` | Brand consistency | Always lowercase s, dot |
+| Calling social.plus a "social network" / "forum platform" / "chat tool" | Category mislabel per terminology.md | Use approved category phrasing from positioning.md |
+| "Plug and play" outside developer docs | Per terminology.md | Describe the actual integration path |
+| Invented customer names or stats | Fabrication risk | Use only the approved list |
+| Any HTML — tags, comments, JSON-LD, `<script>`, inline styles | The final deliverable is a Word document (`.docx`). Keeping the markdown intermediate HTML-free ensures the `docx` conversion and the downstream Webflow automation both work cleanly | Write in pure markdown only. Schema, canonical tags, and page meta are handled by the Webflow template |
 
+## Entity and keyword discipline
 
-### Things to avoid
+- Name core entities — **social.plus**, **activity feed**, **zero-party data**, **white-label**, **community infrastructure** — with their canonical forms from `terminology.md`.
+- First in-chunk mention of each technical entity gets an inline gloss (see chunk structure above).
+- Do not stuff keywords. Natural repetition in topically relevant sections is fine; forcing the exact query phrase into every section degrades readability and extraction quality.
+- The target-keyword phrase (= the title) must appear in sentence 1 of the answer-first block. This is checked by `compliance.py`.
 
-- Marketing fluff ("revolutionize", "game-changing", "unlock the power of")
-- Vague claims without supporting data ("significantly improves engagement")
-- Starting sentences with "In today's digital landscape" or similar filler
-- Using passive voice when active voice is clearer
-- Using em dashes — use parentheses or restructure the sentence instead
-- Overusing "social.plus" — the brand should appear naturally in the pitch section and conclusion, not in every paragraph
+## What the downstream pipeline handles (do not duplicate)
 
+The Word document you produce is converted to Webflow-ready HTML by a separate automation. Between the automation and the Webflow template, these are handled for you — do not put them in the document:
 
-### Data and claims
+- Schema markup (Article, FAQPage, Organization, sameAs)
+- Author attribution
+- datePublished / dateModified
+- Canonical URL
+- Open Graph / Twitter meta
+- Any HTML at all
 
-- Use metric ranges from published articles and social.plus data (engagement rate: 20-50%, retention lift: 10-35%, active contributors: 10-30%)
-- Only cite customer names from the approved list: Noom, Harley-Davidson, Smart Fit, Ulta Beauty, Betgames
-- Only cite customer stats that have been published: Noom (45M+ users), Harley-Davidson (1M+ community members), Smart Fit (60% MoM growth), Betgames (200M users)
-- Never invent statistics, quotes, or case study details
+The document body stays pure prose: H1 title, four labeled-paragraph metadata lines, answer-first block, TL;DR, sections, tables, lists, FAQs, pitch, conclusion.

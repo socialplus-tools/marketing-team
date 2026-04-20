@@ -1,0 +1,11 @@
+# Skill working artifacts — do not commit
+outputs/
+*.docx
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
