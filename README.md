@@ -15,6 +15,8 @@ Shared plugin marketplace and brand reference for the marketing team. Skills fet
 
 Step 8 is important: it pulls in new skills and skill improvements automatically whenever a commit lands on `main`. Without it, you'll stay frozen on the version you installed and miss every future update. If you ever skipped it, just toggle it on and click **Check for updates** to catch up.
 
+![Sync automatically and Check for updates in the Cowork plugin menu](./assets/cowork-sync-automatically.png)
+
 ## Available skills (15)
 
 ### Content creation
