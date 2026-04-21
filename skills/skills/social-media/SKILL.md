@@ -13,7 +13,7 @@ description: >
   Do NOT use for blog content (use blog-seo-content) or email content (use newsletters).
 ---
 
-# social.plus Social Media Content
+# social.plus Social Media Content (BETA/v1, needs optimization)
 
 This skill produces platform-specific social media content for social.plus. Each platform has different format constraints, tone expectations, and content structures — this skill ensures they're all followed.
 
