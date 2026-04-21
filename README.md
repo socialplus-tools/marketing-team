@@ -12,7 +12,7 @@ Shared plugin marketplace and brand reference for the marketing team. Skills fet
 6. Enter `cruciate-hub/marketing-team` → click **Sync**
 7. Click the **+** to install
 
-## Available skills (13)
+## Available skills (15)
 
 ### Content creation
 
@@ -42,6 +42,13 @@ Shared plugin marketplace and brand reference for the marketing team. Skills fet
 | **link-building-vetter** | Vets incoming ABC link exchange requests against social.plus guidelines, scores them 1-10, and drafts response emails. |
 | **backlink-placement-finder** | Finds contextually relevant backlink placement opportunities on partner websites and drafts request emails. |
 
+### Formatting & conversion
+
+| Skill | What it does |
+|---|---|
+| **legal-docs-formatter** | Converts legal documents (MSA, DPA, SLA, Terms, Privacy, etc.) into clean HTML ready to paste into a Webflow Rich Text Embed block on a 📜 Legals CMS item. |
+| **svg-icon-transformer** | Transforms SVG input into clean, accessible, inline-embed-ready icon markup with `1em` sizing and correct accessibility defaults. |
+
 ## Repo structure
 
 | Path | Purpose |
@@ -52,7 +59,7 @@ Shared plugin marketplace and brand reference for the marketing team. Skills fet
 | [`assets/`](./assets) | Official logo SVGs |
 | [`emails/`](./emails) | Email template reference, strategy guide, and HTML examples |
 | [`website/`](./website) | Live website content JSON (auto-updated on every Webflow publish via a Cloudflare Worker) |
-| [`skills/`](./skills) | The plugin source — contains the 13 skill definitions that fetch from the folders above |
+| [`skills/`](./skills) | The plugin source — contains the 15 skill definitions that fetch from the folders above |
 
 ## How updates work
 

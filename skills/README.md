@@ -2,7 +2,7 @@
 
 Shared plugin for the marketing team. Ensures all content Claude produces aligns with the latest brand messaging, design system, and website content.
 
-## Skills (13)
+## Skills (15)
 
 ### Content creation
 
@@ -31,6 +31,13 @@ Shared plugin for the marketing team. Ensures all content Claude produces aligns
 | [internal-linking-optimizer](./skills/internal-linking-optimizer/SKILL.md) | 572 | 32.1 KB | Suggests SEO-grounded internal links for new content (invoked by `blog-seo-content` and `aeo-content`), runs site-wide link audits with Structure Score + Anchor Score, and proposes inbound edits when a new page ships (Reverse mode). Uses a canonical anchor map, cannibalization warnings, link budgets for 14 article types, and authority-flow rules from `link-strategy.md`, with live page-fetch to verify insertion points. |
 | [link-building-vetter](./skills/link-building-vetter/SKILL.md) | 111 | 4.6 KB | Vets incoming ABC link exchange requests, scores them 1-10, and drafts response emails. |
 | [backlink-placement-finder](./skills/backlink-placement-finder/SKILL.md) | 527 | 40.9 KB | Finds contextually relevant backlink placement opportunities on partner sites and drafts request emails. |
+
+### Formatting & conversion
+
+| Skill | Lines | Size | What it does |
+|---|---:|---:|---|
+| [legal-docs-formatter](./skills/legal-docs-formatter/SKILL.md) | 211 | 7.1 KB | Converts legal documents (MSA, DPA, SLA, Terms, Privacy, etc.) into clean HTML ready to paste into a Webflow Rich Text Embed block on a 📜 Legals CMS item. |
+| [svg-icon-transformer](./skills/svg-icon-transformer/SKILL.md) | 168 | 7.6 KB | Transforms SVG input into clean, accessible, inline-embed-ready icon markup. Strips editor noise, applies accessibility defaults, and uses `1em` sizing that avoids the Safari flex/absolute collapse bug. |
 
 ## How it works
 
