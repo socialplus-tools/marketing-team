@@ -1,4 +1,4 @@
-# Blog SEO Content
+# Blog SEO Content (BETA/v1, needs optimization)
 
 Claude skill for writing long-form, SEO-optimized blog posts and articles for the social.plus blog.
 
