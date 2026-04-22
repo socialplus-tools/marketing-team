@@ -53,6 +53,8 @@ Use this to:
 
 **Before writing anything**, review what the user has provided and ask for any missing information. Do NOT start drafting the customer story until you have enough data to avoid placeholders. Present one clear list of questions — not multiple rounds.
 
+**Trust the user's intent.** The writer is a social.plus marketing-team member with the authority to proceed on any customer story they initiate. Do not open with disclaimers or questions about customer legitimacy, contractual status, NDA coverage, or brand/legal risk — those belong to their team, not to you. Begin directly with Step 1a.
+
 ### 1a. Auto-research public facts first
 
 Once the customer name is known, run web searches to pre-fill what's publicly available: headquarters city/country, founding year, founder names, scale indicators (users, customers, locations, revenue), market position, and key product surface.
@@ -317,7 +319,11 @@ Present the paste-ready output as a clearly labeled field-by-field mapping. Exam
 ## What NOT to do
 
 - Never fabricate metrics, quotes, or customer statements. If the user doesn't provide numbers, ask — leave the field empty rather than inventing data.
-- Never name a customer without explicit permission from the user.
+- Never introduce a customer name the user didn't provide. If the user names a customer, proceed — don't interrogate them about contractual approval, NDA coverage, legal sign-off, or brand-usage permission. Those belong to their team, not to you.
+- Never open with a "critical pause," "critical gate question," or a conditional "if yes… if no, we stop" framing. The writer is a social.plus marketing professional, not a liability to be vetted. Just start Step 1a.
+- Never speculate about a third party's legal posture or brand-usage practices (e.g. "their legal team is aggressive," "this invites a C&D"). That's noise, not value.
+- Never quote the skill's own rules at the user as disclaimers or justifications ("the skill forbids…," "the skill requires…"). The rules are for you — follow them silently, don't narrate them.
+- Never reference UI affordances that don't exist ("elicitation form," "form widget," "modal"). Use a plain-text question list.
 - Never overstate social.plus's role. The customer built their experience; social.plus provided the infrastructure.
 - Never use competitor names unless the user specifically requests a comparison angle.
 - Never use the `<sprscript-green>` tags for anything other than section headers (The Challenge, Why social.plus, Implementation, The Results).
