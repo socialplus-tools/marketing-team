@@ -83,6 +83,8 @@ Check for and ask about:
 
 Only ask about items that are genuinely missing from the user's input — don't re-ask what they already provided. Once you have enough information to write without placeholders, proceed to drafting.
 
+Finally, **ask once whether the user has the Webflow connector (`webflow-socialplus` MCP) activated.** If yes, you can create the customer story directly as a draft item in the `💼 Customer Stories` CMS collection instead of producing paste-ready output — see the **Output format** section for how the two modes differ.
+
 ## Webflow CMS field mapping
 
 Every customer story is a CMS item in the `💼 Customer Stories` collection. When writing a customer story, produce content for each of these fields. Present each field clearly labeled so the user can paste directly into Webflow.
@@ -259,7 +261,12 @@ SEO meta description, under 155 characters. Pattern: "Discover how [Company] [ou
 
 ## Output format
 
-Present the output as a clearly labeled field-by-field mapping. The user copies each value into the corresponding Webflow CMS field. Example structure:
+Two delivery modes, depending on whether the user has the `webflow-socialplus` MCP connector activated:
+
+- **Connector activated** → Use `collections_items_create_item` on the `💼 Customer Stories` collection to create a new **draft** item (do not auto-publish). Populate each field with the values produced per the Webflow CMS field mapping above. For MultiReference fields (`Sidebar | Use Cases`, `Industry`, `SDK`, `UIKit`), first look up item IDs via `collections_items_list_items` on the corresponding reference collection, and pass the IDs — never the display names. Report back with a link to the draft, the list of fields populated, and any fields that were skipped so the user can fill them in manually before publishing.
+- **Connector not activated** → Produce the field-by-field paste-ready doc shown below. The user copies each value into the corresponding Webflow CMS field manually.
+
+Present the paste-ready output as a clearly labeled field-by-field mapping. Example structure:
 
 ```
 ## [Company Name] — Customer Story
